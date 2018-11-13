@@ -22,10 +22,10 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Campos" id="menu_root"/>
+    <menuitem name="Campos" id="campos.menu_root"/>
     <!-- menu categories -->
 
-    <menuitem name="Vista de campos" id="campos_menu_1" parent="menu_root"/>
+    <menuitem name="Vista de campos" id="campos_menu_1" parent="campos.menu_root"/>
 
     <!-- actions -->
 
