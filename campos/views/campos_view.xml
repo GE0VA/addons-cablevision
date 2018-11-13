@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="campos_tree_view">
+            <field name="name">Lista campos</field>
+            <field name="model">campos.odoo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="active"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="campos_form_view" model="ir.ui.view">
+            <field name="name">Vista formulari de Campos</field>
+            <field name="model">campos.odoo</field>
+            <field name="arch" type="xml">
+                <form string="Campos del Sistema">
+                    <header>
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="amount"/>
+                            <field name="age"/>
+                            <field name="attachment"/>
+                            <field name="date"/>
+                            <field name="datetime"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Pagina para la descripcion">
+                                <group>
+                                    <field name="description"/>
+                                    <field name="html"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="campos_action_view">
+            <field name="name">Accion de Campos</field>
+            <field name="res_model">campos.odoo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="campos.action_server">
+          <field name="name">campos server</field>
+          <field name="model_id" ref="model_campos_campos"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="Campos" id="campos_menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Vista de campos" id="campos_menu_1" parent="campos_menu_root"/>
+        <!--<menuitem name="Menu 2" id="campos.menu_2" parent="campos.menu_root"/>
+        -->
+        <!-- actions -->
+        <menuitem name="Lista de campos" id="campos_menu_1_list" parent="campos_menu_1"
+                  action="campos_action_view"/>
+        <!--
+        <menuitem name="Server to list" id="campos" parent="campos.menu_2"
+                  action="campos.action_server"/>
+        -->
+    </data>
+</odoo>
