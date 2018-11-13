@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+		<delete id="campos.coxml_1" model="campos.odoo"/>
+		<delete id="campos.coxml_2" model="campos.odoo"/>
+		<delete id="campos.coxml_3" model="campos.odoo"/>
+		<delete id="campos.coxml_4" model="campos.odoo"/>
+		<delete id="campos.coxml_5" model="campos.odoo"/>
+		
+		<record id="coxml_1" model="campos.odoo">
+			<field name="name">Francisco</field>
+			<field name="active">true</field>
+			<field name="amount">0.50</field>
+		</record>
+		
+		<record id="coxml_2" model="campos.odoo">
+			<field name="name">Andres</field>
+			<field name="active">true</field>
+			<field name="amount">0.50</field>
+		</record>
+		
+		<record id="coxml_3" model="campos.odoo">
+			<field name="name">Kevin</field>
+			<field name="active">true</field>
+			<field name="amount">0.50</field>
+		</record>
+		
+		<record id="coxml_4" model="campos.odoo">
+			<field name="name">Yurguen</field>
+			<field name="active">true</field>
+			<field name="amount">0.50</field>
+		</record>
+		
+		<record id="coxml_5" model="campos.odoo">
+			<field name="name">Edgar</field>
+			<field name="active">true</field>
+			<field name="amount">0.50</field>
+		</record>
+	</data>
+</odoo>

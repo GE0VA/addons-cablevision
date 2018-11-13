@@ -26,6 +26,7 @@
             <group cols="2">
               <group cols="2">
                 <field name="name"/>
+                <field name="titulo_id"/>
                 <field name="active"/>
                 <field name="date"/>
                 <field name="date_time"/>
@@ -37,6 +38,14 @@
               </group>
             </group>
             <notebook>
+              <page string="Titulaciones">
+                <field name="campos_odoo_id">
+                  <tree string="lineas de titulos" editable="bottom" >
+                    <field name="titulo_id"/>
+                    <field name="description"/>
+                  </tree>
+                </field>
+              </page>
               <page string="Pagina para la Descripcion">
                 <group>
                   <field name="decription"/>
