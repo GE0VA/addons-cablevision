@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="geo.list">
+      <field name="name">geo list</field>
+      <field name="model">geo.geo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="action_geo_todo" model="ir.actions.server">
+      <field name="name">GEO</field>
+      <field name="type">ir.actions.server</field>
+      <field name="model_id" ref="geo.model_geo_geo"/>
+      <field name="state">code</field>
+      <field name="code">
+        raise Warning(object.name)
+      </field>
+    </record>
+    
+    <record model="ir.actions.server" id="print_instance">
+      <field name="name">Capa</field>
+      <field name="model_id" ref="model_geo_geo"/>
+      <field name="code">
+        raise Warning(object.name)
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="geo.action_window">
+      <field name="name">geo window</field>
+      <field name="res_model">geo.geo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="geo.action_server">
+      <field name="name">geo server</field>
+      <field name="model_id" ref="model_geo_geo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+        "type": "ir.actions.act_window",
+        "view_mode": "tree,form",
+        "res_model": self._name,
+        }
+      </field>
+    </record>
+    
+    <!-- Top menu item -->
+    <menuitem name="geo" id="geo.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="geo.menu_1" parent="geo.menu_root"/>
+    <menuitem name="Menu 2" id="geo.menu_2" parent="geo.menu_root"/>
+    <!-- actions -->
+    <menuitem name="List" id="geo.menu_1_list" parent="geo.menu_1"
+              action="geo.action_window"/>
+    <menuitem name="Server to list" id="geo" parent="geo.menu_2"
+              action="geo.action_server"/>
+  </data>
+</odoo>
