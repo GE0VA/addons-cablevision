@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="campos_tree_view">
+      <field name="name">Lista de campos</field>
+      <field name="model">campos.odoo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="campos_action_window">
+      <field name="name">Accion de Campos</field>
+      <field name="res_model">campos.odoo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Campos" id="menu_root"/>
+    <!-- menu categories -->
+
+    <menuitem name="Vista de campos" id="campos_menu_1" parent="menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="campos.menu_1_list" parent="campos_menu_1"
+              action="campos_action_window"/>
+  </data>
+</odoo>
