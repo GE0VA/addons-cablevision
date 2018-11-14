@@ -18,16 +18,20 @@
       <field name="model">campos.odoo</field>
       <field name="arch" type="xml">
         <form string="esto es un formulario">
+          <header>
+            <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="contratar" />
+            <button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','despedido','borrador'])]}" type="object" string="despedir"/>
+            <button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado'])]}" type="object" string="Cancelar"/>
+            <field name="state" widget="statusbar"/>
+          </header>
           <sheet>
             <group>
               <field name="name"/>
               <field name="active"/>
               <field name="titulo_id"/>
-              <field name="titulaciones_ids"
+              <field name="certificaciones_ids"
                      widget="many2many_tags"
                      options="{'color_field': 'color'}" />
-              <field name="otrarelacion_ids"/>
-              <field name="otrarelacion2_ids"/>
             </group>
             <group>
               <field name="vehiculos_id"/>
@@ -42,8 +46,8 @@
                 </field>
               </page>
               <page string="Licencias">
-                <field name="licencias_ids">
-                  <tree string="lineas de Licencias" >
+                <field name="licencias_ids" >
+                  <tree string="lineas de Licencias" editable="bottom">
                     <field name="licencia_id"/>
                     <field name="vencimiento_date"/>
                   </tree>

@@ -14,7 +14,19 @@ class Campos(models.Model):
     vehiculos_id = fields.Many2one(comodel_name="vehiculos.odoo", string="Vehiculo", required=False, )
     licencias_ids = fields.One2many(comodel_name="licenciastecnico.odoo.lines", inverse_name="campos_id", string="Lineas de titulos", required=False, )
     certificaciones_ids = fields.Many2many(comodel_name="certificaciones.odoo", relation="campos_certificacion_rel", column1="tecnico_id", column2="certificaciones_id", string="Certificaciones", )
+    state = fields.Selection(string="Estado", selection=[('borrador', 'BORRADOR'), ('contratado', 'CONTRATADO'), ('despedido', 'DESPEDIDO'),('cancelado', 'CANCELADO') ], required=False, default='borrador')
 
+    @api.multi
+    def a_contratado(self):
+        self.state = 'contratado'
+
+    @api.multi
+    def a_despedido(self):
+        self.state = 'despedido'
+
+    @api.multi
+    def a_cancelado(self):
+        self.state = 'cancelado'
 
 class TitulosCampos(models.Model):
     _name = 'campos.odoo.lines'
