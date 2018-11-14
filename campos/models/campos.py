@@ -20,6 +20,22 @@ class Campos(models.Model):
         ('close', 'Cerrado')], required=False, )
     data= fields.Date(string="Fecha registro", required=False, )
     data_time= fields.Datetime(string="Fecha y hora del registro", required=False, )
+    titulo_id= fields.Many2one(comodel_name="titulo.odoo", string="titulo", required=False, )
+    campos_odoo_id= fields.One2many(comodel_name="campos.odoo.lines", inverse_name="campos_id", string="", required=False, )
+    titulaciones = fields.Many2many(comodel_name="titulo.odoo",
+                                    relation="titulo_odoo_rel",
+                                    column1="campos_id",
+                                    column2="titulo_id",
+                                    string="Titulacion", )
+
+
+    class TitulosCampos(models.Model):
+        _name = 'campos.odoo.lines'
+        _description ="lineas con los titulos del cliente"
+
+        campos_id = fields.Many2one(comodel_name="campos.odoo", string="lineas de titulos", required=False, )
+        titulo_id = fields.Many2one(comodel_name="titulo.odoo", string="titulo", required=False, )
+        description= fields.Char(string="Descripcion", required=False, )
 
 
 
@@ -36,8 +52,7 @@ class Campos(models.Model):
 
 
 
-
-# class campos(models.Model):
+    # class campos(models.Model):
 #     _name = 'campos.campos'
 
 #     name = fields.Char()

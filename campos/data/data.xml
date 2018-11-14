@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <delete id="campos.coxml" model="campos.odoo"/>
+
+        <record id="coxml" model="campos.odoo" >
+            <field name="name">Leo</field>
+            <field name="active">True</field>
+
+            <field name="amount">0.50</field>
+
+        </record>
+
+             <record id="coxml1" model="campos.odoo">
+            <field name="name">Leoooo</field>
+            <field name="active">True</field>
+
+            <field name="amount">0.51</field>
+
+
+        </record>
+    </data>
+
+</odoo>

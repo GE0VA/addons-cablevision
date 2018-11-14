@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Campos",
+     'name': "Tecnico",
 
     'summary': """
      Modulo para ver campos de Odoo
     """,
 
     'description': """
-        Este modulo sere para montar los campos del sistema Odoo
+        Este modulo permite relizar el control de los tecnico
     """,
 
     'author': "Cable Vision",
@@ -18,9 +18,6 @@
 
     'data': [
 
-        'views/campos_view.xml',
-        'data/campos.odoo.csv',
-        'data/data.xml',
+        'views/tecnico_view.xml',
     ],
-
 }
