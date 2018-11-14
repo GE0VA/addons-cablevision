@@ -15,7 +15,24 @@ class tecnico(models.Model):
     vehiculo_id = fields.Many2one(comodel_name="vehiculo.odoo", string="Vehiculo", required=False, )
     licencias_ids = fields.One2many(comodel_name="tecnico.odoo.licencia.line", inverse_name="licencia_id", string="Licencias", required=False, )
     certificaciones_ids = fields.Many2many(comodel_name="certificacion.odoo", relation="tecnico_certificacion_rel", column1="tecnico_id", column2="certificacion_id", string="Certificaciones", )
+    state = fields.Selection(string="Estado",
+                             selection=[('borrador', 'Borrador'),
+                                        ('contratado', 'Contratado'),
+                                        ('despedido', 'Despedido'),
+                                        ('cancelado', 'Cancelado') ], required=False, default='borrador' )
 
+
+    @api.multi
+    def a_contratado(self):
+        self.state='contratado'
+
+    @api.multi
+    def a_despedido(self):
+        self.state = 'despedido'
+
+    @api.multi
+    def a_cancelado(self):
+        self.state = 'cancelado'
 
 class LineasLicenciaTecnico(models.Model):
     _name = 'tecnico.odoo.licencia.line'

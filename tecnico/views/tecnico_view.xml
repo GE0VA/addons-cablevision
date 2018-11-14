@@ -6,6 +6,8 @@
       <field name="name">Lista de Tecnico</field>
       <field name="model">tecnico.odoo</field>
       <field name="arch" type="xml">
+
+
         <tree>
           <field name="name"/>
         </tree>
@@ -17,6 +19,12 @@
       <field name="model">tecnico.odoo</field>
       <field name="arch" type="xml">
         <form string="tecnico en el  Sistema">
+           <header>
+             <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratado"/>
+             <button name="a_despedido" attrs="{'invisible':[('state','not in',['cancelado','borrador','despedido'])]}" type="object" string="Despedido"/>
+             <button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Cancelado"/>
+              <field name="state" widget="statusbar" />
+          </header>
           <sheet>
             <group cols="4">
               <field name="name"/>
