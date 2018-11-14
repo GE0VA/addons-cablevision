@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="licencias_tree_view">
+      <field name="name">Lista Licencias</field>
+      <field name="model">licencias</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="licencias_form_view" model="ir.ui.view">
+      <field name="name">Formulario de Licencias</field>
+      <field name="model">licencias</field>
+      <field name="arch" type="xml">
+        <form string="Formulario de licencias">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="licencias_action_view">
+      <field name="name">Ventana licencias</field>
+      <field name="res_model">licencias</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+        <menuitem name="Configuración" id="tecnico_menu_2" parent="tecnico_menu_root"/>
+    <!--<menuitem name="Menu 2" id="tecnico.menu_2" parent="tecnico.menu_root"/>-->
+    <!-- actions -->
+    
+    <menuitem name="Lista de licencias" id="licencias_menu_1_list" parent="tecnico_menu_2"
+              action="licencias_action_view"/>
+  </data>
+</odoo>

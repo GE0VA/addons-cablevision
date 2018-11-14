@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tecnico_tecnico,tecnico.tecnico,model_tecnico_tecnico,,1,0,0,0

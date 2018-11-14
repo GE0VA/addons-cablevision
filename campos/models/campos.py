@@ -31,8 +31,6 @@ class Campos(models.Model):
                                      column2="titulo_id",
                                      string="Titulaciones", )
      
-     
-     
      # titulaciones = fields.Many2many(comodel_name="titulo.odoo", relation="titulo_odoo_rel", column1="campos_is", column2="titulo_id", string="Titulaciones", )
      # titulaciones2 = fields.Many2many(comodel_name="titulo.odoo",string="Titulaciones", )
      

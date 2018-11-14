@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="certificaciones_tree_view">
+      <field name="name">Lista certificaciones</field>
+      <field name="model">certificaciones</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="certificaciones_form_view" model="ir.ui.view">
+      <field name="name">Formulario de Licencias</field>
+      <field name="model">certificaciones</field>
+      <field name="arch" type="xml">
+        <form string="Formulario de certificaciones">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="date_curse"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="certificaciones_action_view">
+      <field name="name">Ventana certificaciones</field>
+      <field name="res_model">certificaciones</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    
+    <menuitem name="Lista de certificaciones" id="certificaciones_menu_1_list" parent="tecnico_menu_2"
+              action="certificaciones_action_view"/>
+  </data>
+</odoo>

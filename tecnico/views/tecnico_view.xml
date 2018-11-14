@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="tecnico_tree_view">
+      <field name="name">Lista Técnico</field>
+      <field name="model">tecnico</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="in_date"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="tecnico_form_view" model="ir.ui.view">
+      <field name="name">Formulario de Técnico</field>
+      <field name="model">tecnico</field>
+      <field name="arch" type="xml">
+        <form string="Formulario de Tecnico">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="age"/>
+              <field name="email"/>
+              <field name="state"/>
+              <field name="in_date"/>
+              <field name="comment"/>
+              <field name="vehicle_id"/>
+              <field name="certificciones_ids"
+                     widget="many2many_tags"
+                    
+              />
+            </group>
+            <notebook>
+              <page string="Licencias">
+                <field name="licencias_ids">
+                  <tree string="lineas de licencias" editable="bottom" >
+                    <field name="licencia_id"/>
+                    <field name="date_due"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="tecnico_action_view">
+      <field name="name">Ventana Tecnico</field>
+      <field name="res_model">tecnico</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="tecnico.action_server">
+      <field name="name">tecnico server</field>
+      <field name="model_id" ref="model_tecnico_tecnico"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+    
+    <!-- Top menu item -->
+    <menuitem name="Tecnico" id="tecnico_menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Tecnico" id="tecnico_menu_1" parent="tecnico_menu_root"/>
+    <!--<menuitem name="Menu 2" id="tecnico.menu_2" parent="tecnico.menu_root"/>-->
+    <!-- actions -->
+    <menuitem name="Lista de Técnicos" id="tecnico_menu_1_list" parent="tecnico_menu_1"
+              action="tecnico_action_view"/>
+    <!--<menuitem name="Server to list" id="tecnico" parent="tecnico.menu_2"-->
+    <!--action="tecnico.action_server"/>-->
+  </data>
+</odoo>
