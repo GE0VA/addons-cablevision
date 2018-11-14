@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="tecnico_inherit_form_view" model="ir.ui.view">
+            <field name="name">Herencia de Tecnico form</field>
+            <field name="model">campos.odoo</field>
+            <field name="inherit_id" ref="campos.campos_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="calle1"/>
+                    <field name="ciudad"/>
+                    <field name="pais"/>
+                    <field name="provincia"/>
+                    <field name="active"/>
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
