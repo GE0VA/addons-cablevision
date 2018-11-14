@@ -41,7 +41,14 @@
                   </tree>
                 </field>
               </page>
-
+              <page string="Licencias">
+                <field name="licencias_ids">
+                  <tree string="lineas de Licencias" >
+                    <field name="licencia_id"/>
+                    <field name="vencimiento_date"/>
+                  </tree>
+                </field>
+              </page>
             </notebook>
           </sheet>
         </form>
@@ -60,14 +67,14 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Campos" id="campos_menu_root"/>
+    <menuitem name="Tecnicos del Plantel" id="campos_menu_root"/>
     <!-- menu categories -->
 
     <menuitem name="Vista de campos" id="campos_menu_1" parent="campos_menu_root"/>
 
     <!-- actions -->
 
-    <menuitem name="List" id="campos.menu_1_list" parent="campos_menu_1"
+    <menuitem name="Tecnico" id="campos.menu_1_list" parent="campos_menu_1"
               action="campos_action_window"/>
   </data>
 </odoo>

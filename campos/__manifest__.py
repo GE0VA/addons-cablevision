@@ -26,8 +26,11 @@
         # 'security/ir.model.access.csv',
         'views/campos_view.xml',
         'views/vehiculos_view.xml',
+        'views/certificaciones_view.xml',
+        'views/licencias_view.xml',
         'data/campos.odoo.csv',
         'data/data.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

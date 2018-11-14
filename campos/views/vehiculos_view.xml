@@ -42,11 +42,10 @@
         </record>
 
 
-        <menuitem name="Configuracion" id="campos_menu_vehiculos" parent="campos_menu_root"/>
+        <menuitem name="Configuracion" id="campos_menu_configuration" parent="campos_menu_root"/>
 
         <!-- actions -->
-
-        <menuitem name="ListVehiculos" id="campos.menu_vehiculos_list" parent="campos_menu_vehiculos"
+        <menuitem name="Vehiculos" id="campos.menu_vehiculos_list" parent="campos_menu_configuration"
                   action="vehiculos_action_window"/>
 
     </data>

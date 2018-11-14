@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="certificaciones_tree_view">
+            <field name="name">Lista certificaciones</field>
+            <field name="model">certificaciones.odoo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="curso_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="certificaciones_form_view" model="ir.ui.view">
+            <field name="name">Formulario certificaciones</field>
+            <field name="model">certificaciones.odoo</field>
+            <field name="arch" type="xml">
+                <form string="formualario certificaciones">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="curso_date"/>
+                            <field name="descripcion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="certificaciones_action_window" model="ir.actions.act_window">
+            <field name="name">Accion de certificaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">certificaciones.odoo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Este es el formulario de certificaciones
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <!-- actions -->
+        <menuitem name="certificaciones" id="campos.menu_certificaciones_list" parent="campos_menu_configuration"
+                  action="certificaciones_action_window"/>
+
+    </data>
+</odoo>
