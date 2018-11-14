@@ -19,6 +19,12 @@
             <field name="model">tecnico.odoo</field>
             <field name="arch" type="xml">
                 <form string="Tecnico del Sistema">
+                    <header>
+                        <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','cancelado'])]}" type="object" string="Contratado"/>
+                        <button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','borrador','despedido'])]}" type="object" string="Despedido"/>
+                        <button name="a_cancelado" states="cancelado,borrador,despedido" type="object" string="Cancelado"/>
+                        <field name="state" widget="statusbar" />
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>

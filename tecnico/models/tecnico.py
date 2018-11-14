@@ -22,6 +22,25 @@ class Tecnico(models.Model):
     licencia_odoo_id = fields.One2many(comodel_name="tecnico.odoo.lines", inverse_name="tecnico_id", string="",  required=False, )
 
     vehiculo_id = fields.Many2one(comodel_name="vehiculo.odoo", string="Vehiculo", required=False, )
+    state = fields.Selection(string="Estado", selection=[
+        ('borrador', 'BORRADOR'),
+        ('contratado', 'CONTRATADO'),
+        ('despedido', 'DESPEDIDO'),
+        ('cancelado', 'CANCELADO'),
+
+    ], required=False, default='borrador')
+
+    @api.multi
+    def a_contratado(self):
+        self.sate='contratado'
+
+    @api.multi
+    def a_despedido(self):
+        self.sate = 'despedido'
+
+     @api.multi
+     def a_cancelado(self):
+        self.sate = 'cancelado'
 
 class LicenciaTecnico(models.Model):
     _name = 'tecnico.odoo.lines'  # se crea la tabla campos_odoo
