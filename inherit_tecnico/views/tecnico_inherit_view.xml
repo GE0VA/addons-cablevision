@@ -1,21 +1,64 @@
 <odoo>
-  <data>
-  <!-- Inherit Form View to Modify it -->
-  <record id="tecnico_inherit_form_view" model="ir.ui.view">
-      <field name="name">Herencia Tecnico</field>
-      <field name="model">tecnico</field>
-      <field name="inherit_id" ref="tecnico.tecnico_form_view"/>
-      <field name="arch" type="xml">
-          
-          <xpath expr="//field[@name='name']" position="after">
-              <field name="calle1"/>
-              <field name="ciudad"/>
-              <field name="pais"/>
-              <field name="provincia"/>
-              <field name="active"/>
-          </xpath>
-          
-      </field>
-  </record>
-  </data>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="tecnico_inherit_form_view" model="ir.ui.view">
+            <field name="name">Herencia Tecnico</field>
+            <field name="model">tecnico</field>
+            <field name="inherit_id" ref="tecnico.tecnico_form_view"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="calle1"/>
+                    <field name="ciudad"/>
+                    <field name="pais"/>
+                    <field name="provincia"/>
+                    <field name="active"/>
+                </xpath>
+                
+                <!--<field name="name" position="before">-->
+                <!--<field name="calle1"/>-->
+                <!--<field name="ciudad"/>-->
+                <!--<field name="pais"/>-->
+                <!--<field name="provincia"/>-->
+                <!--<field name="active"/>-->
+                <!--</field>-->
+                
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Nombre de Técnico</attribute>
+                </xpath>
+            
+            </field>
+        </record>
+        
+        <record id="tecnico_inherit_tree_view" model="ir.ui.view">
+            <field name="name">Herencia Tecnico Tree</field>
+            <field name="model">tecnico</field>
+            <field name="inherit_id" ref="tecnico.tecnico_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="active"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="tecnico_search_view" model="ir.ui.view">
+            <field name="name">Vista Busqueda</field>
+            <field name="model">tecnico</field>
+            <field name="arch" type="xml">
+                <search string="Busqueda">
+                    <filter name="active" string="Estado activo" domain="[('active','=',True)]"/>
+                    <filter name="active" string="Estado inactivo" domain="[('active','=',False)]"/>
+                    <field name="name" string="string" domain="[()]"/>
+                    <field name="email" string="string" domain="[()]"/>
+                     <group expand="0" string="Group By">
+                        <filter name="state" string="Estado" context="{'group_by':'state'}"/>
+                        <separator/>
+                        <filter string="Vehiculo" context="{'group_by':'vehicle_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+    
+    </data>
 </odoo>
