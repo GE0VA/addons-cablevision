@@ -9,3 +9,4 @@ class Titulo(models.Model):
      
      name = fields.Char(string="Nombre de Titulo", required=False, )
      date = fields.Date(string="Fecha Titulo", required=False, )
+     color = fields.Integer(string="Color", required=False, )
