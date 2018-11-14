@@ -4,7 +4,10 @@ from odoo import models, fields, api
 
 class Campos(models.Model):
     _name = 'campos.odoo'
-    name = fields.Char(string="", required=False, )
+    _description = 'Tabla praa registrar técnicos'
+    _inherit =  ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
+
+    name = fields.Char(string="", required=False, track_visible='True' )
     active = fields.Boolean(string="Activo",default=True  )
     titulo_id = fields.Many2one(comodel_name="titulo.odoo", string="Titulo", required=False, )
     campos_odoo_ids = fields.One2many(comodel_name="campos.odoo.lines", inverse_name="campos_id", string="Lineas de titulos", required=False, )
