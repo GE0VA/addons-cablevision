@@ -20,6 +20,34 @@
             </field>
         </record>
 
+        <record id="tecnico_inherit_tree_view" model="ir.ui.view">
+            <field name="name">Herencia Tecnica</field>
+            <field name="model">campos.odoo</field>
+            <field name="inherit_id" ref="campos.campos_tree_view"/>
+            <field name="arch" type="xml">
+
+                <field name='name' position="after">
+                    <field name="active"/>
+                    <!-- Add field to tree view-->
+                </field>
+
+            </field>
+        </record>
+
+        <record id="tecnico_search_view" model="ir.ui.view">
+            <field name="name">Vista Busqueda</field>
+            <field name="model">campos.odoo</field>
+            <field name="arch" type="xml">
+                <search string="Busqueda">
+                    <filter name="active" string="Campo inactivo" domain="[('active','=','True')]"/>
+                    <filter name="active" string="Campo activo" domain="[('active','=','False')]"/>
+                    <field name="name" string="nombre" domain="[()]"/>
+                    <group>
+                        <filter name="state" string="estado" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
 
 
     </data>
