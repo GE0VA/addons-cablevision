@@ -5,8 +5,9 @@ from odoo import models, fields, api
 class Tecnico(models.Model):
     _name = 'tecnico'
     _description = 'Tabla para registrar tecnicos'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
-    name = fields.Char(string='Nombre')
+    name = fields.Char(string='Nombre',track_visibility='always')
     age = fields.Char(string="Edad", required=False, )
     email = fields.Char(string="Email", required=False, )
     sexo = fields.Selection(string="Sexo",
