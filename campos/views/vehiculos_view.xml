@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="vehiculos_tree_view">
+            <field name="name">Lista Vehiculos</field>
+            <field name="model">vehiculos.odoo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="placa"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vehiculos_form_view" model="ir.ui.view">
+            <field name="name">Formulario Vehiculos</field>
+            <field name="model">vehiculos.odoo</field>
+            <field name="arch" type="xml">
+                <form string="formualario vehiculos">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="placa"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="vehiculos_action_window" model="ir.actions.act_window">
+            <field name="name">Accion de Vehiculos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vehiculos.odoo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Este es el formulario de Vehiculos
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Configuracion" id="campos_menu_vehiculos" parent="campos_menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="ListVehiculos" id="campos.menu_vehiculos_list" parent="campos_menu_vehiculos"
+                  action="vehiculos_action_window"/>
+
+    </data>
+</odoo>

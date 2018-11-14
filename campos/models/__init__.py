@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import campos, titulo
+from . import campos, titulo, vehiculos

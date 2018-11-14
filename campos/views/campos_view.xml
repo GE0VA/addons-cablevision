@@ -29,6 +29,9 @@
               <field name="otrarelacion_ids"/>
               <field name="otrarelacion2_ids"/>
             </group>
+            <group>
+              <field name="vehiculos_id"/>
+            </group>
             <notebook>
               <page string="Titulaciones">
                 <field name="campos_odoo_ids">

@@ -11,6 +11,7 @@ class Campos(models.Model):
     titulaciones_ids = fields.Many2many(comodel_name="titulo.odoo", relation="campos_odoo_rel", column1="campos_id", column2="titulo_id", string="Titulaciones", )
     otrarelacion_ids =  fields.Many2many(comodel_name="titulo.odoo", relation="campos_otrarelacion_rel", column1="campos_id", column2="otrarelacion_id", string="Otra Relacion", )
     otrarelacion2_ids = fields.Many2many(comodel_name="titulo.odoo", relation="campos_otrarelacion2_rel")
+    vehiculos_id = fields.Many2one(comodel_name="vehiculos.odoo", string="Vehiculo", required=False, )
 
 
 class TitulosCampos(models.Model):
