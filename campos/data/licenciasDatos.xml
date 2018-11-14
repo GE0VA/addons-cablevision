@@ -1,0 +1,34 @@
+<data noupdate="1">
+    <record id="coxml_1" model="licencias.odoo">
+        <field name="name">A1</field>
+        <field name="description">Bicimoto y motocicleya con motor hasta 125 cc</field>
+    </record>
+    <record id="coxml_2" model="licencias.odoo">
+        <field name="name">A2</field>
+        <field name="description">Motos hasta 500cc</field>
+    </record>
+    <record id="coxml_3" model="licencias.odoo">
+        <field name="name">A3</field>
+        <field name="description">Cualquier motocicleta o bicimoto </field>
+    </record>
+    <record id="coxml_4" model="licencias.odoo">
+        <field name="name">B1</field>
+        <field name="description">Automovil</field>
+    </record>
+    <record id="coxml_5" model="licencias.odoo">
+        <field name="name">B2</field>
+        <field name="description">Camiones</field>
+    </record>
+       <record id="coxml_6" model="licencias.odoo">
+        <field name="name">C1</field>
+        <field name="description">Autobus y Taxi </field>
+    </record>
+    <record id="coxml_7" model="licencias.odoo">
+        <field name="name">D1</field>
+        <field name="description">Tractores y maquinaria</field>
+    </record>
+    <record id="coxml_8" model="licencias.odoo">
+        <field name="name">E1</field>
+        <field name="description">Licencia Universal</field>
+    </record>
+</data>

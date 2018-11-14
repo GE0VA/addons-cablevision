@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record id="certificaciones_form_view" model="ir.ui.view">
+        <field name="name">Vista Vehiculos</field>
+        <field name="model">certificacion.odoo</field>
+        <field name="arch" type="xml">
+            <form string="formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="fecha_curso"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <record id="certificaciones_tree_view" model="ir.ui.view">
+            <field name="name">lista certificaciones</field>
+            <field name="model">certificacion.odoo</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de Certificaciones">
+                    <field name="name"/>
+                    <field name="fecha_curso"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="certificaciones_action_view" model="ir.actions.act_window">
+            <field name="name">Certificaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">certificacion.odoo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p>
+            </field>
+        </record>
+        <menuitem id="UNIQUE_ID_categ4" name="Certificaciones" parent="UNIQUE_ID_categ3" action="certificaciones_action_view" />
+    </data>
+</odoo>

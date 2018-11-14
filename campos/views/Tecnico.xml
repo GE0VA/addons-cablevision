@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+
+
+    <record id="tecnico_form_view" model="ir.ui.view">
+        <field name="name">Vista</field>
+        <field name="model">tecnico</field>
+        <field name="arch" type="xml">
+
+            <form string="formulario">
+                <header>
+                    <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="contratar" />
+                     <button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','despedido','borrador'])]}" type="object" string="despedir"/>
+                        <button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado'])]}" type="object" string="Cancelar"/>
+                         <field name="state" widget="statusbar"/>
+                        </header>
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="edad"/>
+                        <field name="email"/>
+                        <field name="sexo"/>
+                        <field name="fecha_de_ingreso"/>
+                         <field name="comentarios"/>
+                        <field name="vehiculos_id"/>
+
+                        <field name="certificaciones_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
+                        <notebook>
+                             <page string="Licencias">
+                                <field name="tecnico_id">
+                                    <tree string="Lineas de Licencias" editable="botton"> <!--estructura one2many-->
+                                        <field name="licencias_id"/>
+                                        <field name="fecha_vencimiento"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                 <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+            </form>
+
+
+
+        </field>
+        </record>
+
+        <record id="tecnico_tree_view" model="ir.ui.view">
+            <field name="name">lista tecnicos</field>
+            <field name="model">tecnico</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de Tecnicos">
+                    <field name="nombre"/>
+                    <field name="edad"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="tecnico_action_view" model="ir.actions.act_window">
+            <field name="name">tecnicos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tecnico</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="MODULE_NAME_root" name="Tecnicos"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="UNIQUE_ID_categ" name="Tecnicos2" parent="MODULE_NAME_root" />
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="UNIQUE_ID_categ2" name="Tecnico" parent="UNIQUE_ID_categ" action="tecnico_action_view" />
+        <menuitem id="UNIQUE_ID_categ3" name="Configuracion" parent="UNIQUE_ID_categ" />
+
+
+    </data>
+</odoo>

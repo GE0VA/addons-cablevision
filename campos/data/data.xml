@@ -1,0 +1,10 @@
+<data noupdate="1">
+    <record id="coxml_1" model="campos.arbol">
+        <field name="name">Francisco</field>
+        <field name="active">true</field>
+    </record>
+    <record id="coxml_2" model="campos.arbol">
+        <field name="name">Dayana</field>
+        <field name="active">true</field>
+    </record>
+</data>

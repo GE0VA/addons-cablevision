@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="licencias_form_view" model="ir.ui.view">
+        <field name="name">Vista Licencias</field>
+        <field name="model">licencias.odoo</field>
+        <field name="arch" type="xml">
+            <form string="formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <record id="licencias_tree_view" model="ir.ui.view">
+            <field name="name">lista licencias</field>
+            <field name="model">licencias.odoo</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de licencias">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="licencias_action_view" model="ir.actions.act_window">
+            <field name="name">Licencias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">licencias.odoo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p>
+            </field>
+        </record>
+        <menuitem id="UNIQUE_ID_categ5" name="Licencias" parent="UNIQUE_ID_categ3" action="licencias_action_view" />
+    </data>
+</odoo>
