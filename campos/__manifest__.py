@@ -26,6 +26,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/campos_view.xml',
+        'data/campos.odoo.csv',
     ],
 
 }

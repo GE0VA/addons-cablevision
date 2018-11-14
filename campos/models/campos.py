@@ -18,16 +18,18 @@ class Campos(models.Model):
                                                          ], required=False, )
     date = fields.Date(string="Fecha regisro", required=False, )
     datetime = fields.Datetime(string="Fecha y hora del registro", required=False, )
-from odoo import models, fields, api
 
-# class campos(models.Model):
-#     _name = 'campos.campos'
+    titulo_id = fields.Many2one(comodel_name="titulo.odoo", string="Titulo", required=False, )
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+
+    campos_odoo_id = fields.One2many(comodel_name="campos.odoo.lines", inverse_name="campos_id", string="", required=False, )
+
+    titulaciones_ids = fields.Many2many(comodel_name="titulo.odoo", relation="campos_odoo_rel", column1="campos_id", column2="titulo_id", string="Titulaciones", )
+
+    class TitulosCampos(models.Model):
+        _name = 'campos.odoo.lines'  # se crea la tabla campos_odoo
+        description="Lineas con las titulaciones del cliente"
+        campos_id = fields.Many2one(comodel_name="campos.odoo", string="Lineas de titulos", required=False, )
+        titulo_id = fields.Many2one(comodel_name="titulo.odoo", string="Titulo", required=False, )
+        description = fields.Char(string="Descripcion", required=False, )
+

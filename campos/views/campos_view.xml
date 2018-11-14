@@ -25,6 +25,9 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="titulo_id"/>
+                            <field name="titulaciones" widget="many2many_tags" options="{'color_field':'color'}"></field>
+                            <!-- <field name="titulaciones" ></field>-->
                             <field name="active"/>
                             <field name="amount"/>
                             <field name="age"/>
@@ -34,6 +37,14 @@
                         </group>
 
                         <notebook>
+                            <page string="Titulaciones">
+                                <field name="campos_odoo_id">
+                                    <tree string="Lineas de titulos" editable="bottom">
+                                        <field name="titulo_id"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page string="Pagina para la descripcion">
                                 <group>
                                     <field name="description"/>
