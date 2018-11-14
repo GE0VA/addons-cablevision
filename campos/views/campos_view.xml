@@ -27,8 +27,14 @@
               <group cols="2">
                 <field name="name"/>
                 <field name="titulo_id"/>
-                <field name="titulaciones" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True}" />
-                <field name="titulaciones2" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True}" />
+                
+                <field name="titulaciones_ids"
+                       widget="many2many_tags"
+                       options="{'color_field': 'color'}" />
+  
+                <!--<field name="titulaciones_ids"/>-->
+                
+                <!--<field name="titulaciones2" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True}" />-->
                 <field name="active"/>
                 <field name="date"/>
                 <field name="date_time"/>
@@ -42,7 +48,7 @@
             <notebook>
               <page string="Titulaciones">
                 <!--<field name="campos_odoo_id"/>-->
-                <field name="campos_odoo_id">
+                <field name="campos_odoo_ids">
                   <tree string="lineas de titulos" editable="bottom" >
                     <field name="titulo_id"/>
                     <field name="description"/>

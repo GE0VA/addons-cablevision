@@ -23,9 +23,18 @@ class Campos(models.Model):
      date_time = fields.Datetime(string="Fecha y hora de registro", required=False, )
 
      titulo_id = fields.Many2one(comodel_name="titulo.odoo", string="Titulo", required=False, )
-     campos_odoo_id = fields.One2many(comodel_name="campos.odoo.lines", inverse_name="campos_id", string="", required=False, )
-     titulaciones = fields.Many2many(comodel_name="titulo.odoo", relation="titulo_odoo_rel", column1="campos_is", column2="titulo_id", string="Titulaciones", )
-     titulaciones2 = fields.Many2many(comodel_name="titulo.odoo",string="Titulaciones", )
+     campos_odoo_ids = fields.One2many(comodel_name="campos.odoo.lines", inverse_name="campos_id", string="", required=False, )
+
+     titulaciones_ids = fields.Many2many(comodel_name="titulo.odoo",
+                                     relation="campos_odoo_rel",
+                                     column1="campos_id",
+                                     column2="titulo_id",
+                                     string="Titulaciones", )
+     
+     
+     
+     # titulaciones = fields.Many2many(comodel_name="titulo.odoo", relation="titulo_odoo_rel", column1="campos_is", column2="titulo_id", string="Titulaciones", )
+     # titulaciones2 = fields.Many2many(comodel_name="titulo.odoo",string="Titulaciones", )
      
 class TitulosCampos(models.Model):
      _name = 'campos.odoo.lines'
