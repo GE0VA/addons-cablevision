@@ -23,17 +23,29 @@
                         <field name="state" widget="statusbar" clickable="True" />
                     </header>
                     <sheet>
-                        <group col="2">
-                            <field name="name"/>
-                            <field name="active"/>
-                            <field name="age"/>
-                            <field name="photo"/>
-                            <field name="date"/>
-                            <field name="date_time"/>
+                        <group cols="2">
+                            <group cols="2">
+                                <field name="name"/>
+                                <field name="active"/>
+                                <field name="age"/>
+                                <field name="photo"/>
+                            </group>
+                            <group cols="2">
+                                <field name="title"/>
+                                <field name="date"/>
+                                <field name="date_time"/>
+                            </group>
                         </group>
                         <notebook>
                             <page string="Página para describir">
                                 <group>
+                                    <field name="titles_ids">
+                                        <tree string="Lineas de titulo" editable="bottom">
+                                            <field name="titulo_id"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                    <field name="titulaciones_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                                     <field name="description"/>
                                 </group>
                             </page>

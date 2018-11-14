@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Módulos de campos",
+    'name': "Control de técnicos",
 
     'summary': """
-        Campos""",
+        Técnicos y su control""",
 
     'description': """
-        Módulos para creación de campos en Odoo
+        El proposito de este módulo es controlar a los técnicos
     """,
 
     'author': "Cable Visión",
@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '0.2',
 
     # any module necessary for this one to work correctly
     'depends': ['base'],
@@ -24,8 +24,6 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/campos_view.xml',
-        'data/campos.odoo.csv',
-        'data/data.xml'
+        'views/tecnicos_view.xml',
     ],
 }

@@ -1,0 +1,94 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="tecnicos_list">
+      <field name="name">Lista de técnicos</field>
+      <field name="model">tecnicos.odoo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="ingress_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="tecnicos_form_view" model="ir.ui.view">
+      <field name="name">Vista del formulario</field>
+      <field name="model">tecnicos.odoo</field>
+      <field name="arch" type="xml">
+        <form string="Lista de campos">
+          <header>
+              <button name="a_contratado" type="object" string="Contratar" attrs="{'invisible':[('state','in','1')]}" />
+              <button name="a_despedido" type="object" string="Despedir" attrs="{'invisible':[('state','in','2')]}" />
+              <button name="a_cancelado" type="object" string="Cancelar" attrs="{'invisible':[('state','in','3')]}" />
+              <field name="state" widget="statusbar" />
+          </header>
+          <sheet>
+            <group col="4">
+                <field name="name" />
+                <field name="age" />
+                <field name="email" />
+                <field name="genre" />
+                <field name="ingress_date" />
+                <!--<newline /> -->
+                <field colspan="4" name="comments" />
+                <field name="vehicule_id" />
+                <field name="licenses_ids">
+                    <tree string="Lineas de licencias" editable="bottom">
+                        <field name="licencia_id"/>
+                        <field name="fecha_vencimiento"/>
+                    </tree>
+                </field>
+                <!--<newline />-->
+                <field name="titles_ids" widget="many2many_tags" options="{'color_field':'color'}" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="tecnicos_action_view">
+      <field name="name">Acción de técnicos</field>
+      <field name="res_model">tecnicos.odoo</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tecnicos2_action_view">
+      <field name="name">Acción de licencias</field>
+      <field name="res_model">licencias.odoo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="tecnicos.action_server">
+      <field name="name">tecnicos server</field>
+      <field name="model_id" ref="model_tecnicos_tecnicos"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <menuitem name="Técnicos" id="tecnicos_menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Vista de técnicos" id="tecnicos_menu_1" parent="tecnicos_menu_root"/>
+    <menuitem name="Licencias" id="tecnicos_menu_2" parent="tecnicos_menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Lista de técnicos" id="tecnicos_menu_1_list" parent="tecnicos_menu_1"
+              action="tecnicos_action_view"/>
+    <menuitem name="Editar" id="tecnicos_menu_2_list" parent="tecnicos_menu_2"
+              action="tecnicos2_action_view"/>
+    -->
+  </data>
+</odoo>
