@@ -5,7 +5,8 @@ from odoo import models, fields, api
 
 class Campos(models.Model):
      _name = 'campos.odoo'
-
+     # _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
+     
      name = fields.Char(string="Nombre", required=True, )
      active = fields.Boolean(string="Activo", help="Esta es la ayuda del campo" )
      decription = fields.Text(string="Descripción del registro", required=False, )
