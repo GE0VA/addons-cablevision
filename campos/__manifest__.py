@@ -24,6 +24,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/campos_view.xml'
+        'views/campos_view.xml',
+        'data/campos.odoo.csv',
+        # 'data/data.xml'
     ]
 }

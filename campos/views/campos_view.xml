@@ -25,17 +25,32 @@
                   <field name="state" widget="statusbar"/>
               </header>
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="active"/>
-                        <field name="amount"/>
-                        <field name="age"/>
-                        <field name="binary"/>
-                        <field name="date"/>
-                        <field name="date_time"/>
+                    <group cols="2">
+                        <group cols="2">
+                            <field name="name"/>
+                            <field name="titulo_id"/>
+                            <field name="titulaciones"
+                                widget="many2many_tags"
+                                options="{'color_field': 'color'}"/>
+                            <field name="active"/>
+                            <field name="amount"/>
+                            <field name="age"/>
+                            <field name="binary"/>
+                            <field name="date"/>
+                            <field name="date_time"/>
+                        </group>
+
                     </group>
 
                   <notebook>
+                      <page string="Titulaciones">
+                          <field name="campos_odoo_id">
+                              <tree string="Líneas de títulos" editable="bottom">
+                                  <field name="titulo_id"/>
+                                  <field name="description"/>
+                              </tree>
+                          </field>
+                      </page>
                     <page string="Página para la descripción">
                       <group>
                         <field name="description"/>
