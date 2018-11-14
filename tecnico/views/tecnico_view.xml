@@ -17,18 +17,27 @@
       <field name="model">tecnico</field>
       <field name="arch" type="xml">
         <form string="Formulario de Tecnico">
+          
+          <header>
+            <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
+            <button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','borrador','despedido'])]}" type="object" string="Despedir"/>
+            <!--<button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado','borrador'])]}" type="object" string="Cancelar"/>-->
+            <button name="a_cancelado" states="cancelado,borrador,despedido" type="object" string="Cancelar"/>
+            <field name="state" widget="statusbar"/>
+          </header>
+          
           <sheet>
             <group>
               <field name="name"/>
               <field name="age"/>
               <field name="email"/>
-              <field name="state"/>
+              <field name="sexo"/>
               <field name="in_date"/>
               <field name="comment"/>
               <field name="vehicle_id"/>
               <field name="certificciones_ids"
                      widget="many2many_tags"
-                    
+              
               />
             </group>
             <notebook>

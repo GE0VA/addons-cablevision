@@ -9,7 +9,7 @@ class Tecnico(models.Model):
     name = fields.Char(string='Nombre')
     age = fields.Char(string="Edad", required=False, )
     email = fields.Char(string="Email", required=False, )
-    state = fields.Selection(string="Sexo",
+    sexo = fields.Selection(string="Sexo",
                              selection=[
                                  ('m', 'Masculino'),
                                  ('f', 'Femenino'),
@@ -20,7 +20,26 @@ class Tecnico(models.Model):
     vehicle_id = fields.Many2one(comodel_name="vehicle", string="Vehiculo", required=False, )
     licencias_ids = fields.One2many(comodel_name="tecnico.licencias.line", inverse_name="tecnico_id", string="Licencias", required=False, )
     certificciones_ids = fields.Many2many(comodel_name="certificaciones", relation="tecnico_certificaciones_rel", column1="tecnico_id", column2="certificacion_id", string="", )
-    
+    state = fields.Selection(string="Estado",
+                             selection=[
+                                 ('borrador', 'BORRADOR'),
+                                 ('contratado', 'CONTRATADO'),
+                                 ('despedido', 'DESPEDIDO'),
+                                 ('cancelado', 'CANCELADO'),
+                             ], required=False, default='borrador' )
+
+    @api.multi
+    def a_contratado(self):
+        self.state = 'contratado'
+        
+    @api.multi
+    def a_despedido(self):
+        self.state = 'despedido'
+        
+    @api.multi
+    def a_cancelado(self):
+        self.state = 'cancelado'
+        
     
     # value2 = fields.Float(compute="_value_pc", store=True)
     #

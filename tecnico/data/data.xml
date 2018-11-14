@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data >
+		<!--<delete id="tecnico.licencias_" model="licencias"/>-->
+		
+		<record id="licencias_" model="licencias">
+			<field name="name">A1</field>
+			<field name="active">Bicimoto y motocicleta con motor de hasta 125cc
+			</field>
+		</record>
+	
+	</data>
+</odoo>
