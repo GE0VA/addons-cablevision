@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="coxml-1" model="campos.odoo">
+            <field name="name">Rodolfo </field>
+            <field name="active">True</field>
+        </record>
+        <record id="coxml-2" model="campos.odoo">
+            <field name="name">Lius </field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

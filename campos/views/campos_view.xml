@@ -12,6 +12,41 @@
       </field>
     </record>
 
+
+    <record id="campos_form_view" model="ir.ui.view">
+      <field name="name">Formulario de campos</field>
+      <field name="model">campos.odoo</field>
+      <field name="arch" type="xml">
+        <form string="esto es un formulario">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="active"/>
+              <field name="titulo_id"/>
+              <field name="titulaciones_ids"
+                     widget="many2many_tags"
+                     options="{'color_field': 'color'}" />
+              <field name="otrarelacion_ids"/>
+              <field name="otrarelacion2_ids"/>
+            </group>
+            <notebook>
+              <page string="Titulaciones">
+                <field name="campos_odoo_ids">
+                  <tree string="lineas de titulos" >
+                    <field name="titulo_id"/>
+                    <field name="description"/>
+                  </tree>
+                </field>
+              </page>
+
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="campos_action_window">
@@ -22,10 +57,10 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Campos" id="campos.menu_root"/>
+    <menuitem name="Campos" id="campos_menu_root"/>
     <!-- menu categories -->
 
-    <menuitem name="Vista de campos" id="campos_menu_1" parent="campos.menu_root"/>
+    <menuitem name="Vista de campos" id="campos_menu_1" parent="campos_menu_root"/>
 
     <!-- actions -->
 

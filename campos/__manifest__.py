@@ -25,6 +25,8 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/campos_view.xml',
+        'data/campos.odoo.csv',
+        'data/data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
