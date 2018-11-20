@@ -98,6 +98,7 @@
     </record>
     -->
     
+
     <!-- Top menu item -->
     <menuitem name="Campos" id="campos.menu_root"/>
     <!-- menu categories -->
