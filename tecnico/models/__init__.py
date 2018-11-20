@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import tecnico, certificacion, vehiculo, licencias
+from . import tecnico, certificaciones, vehicle, licencias
