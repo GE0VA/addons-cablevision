@@ -1,99 +1,118 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="tecnico_tree_view">
-      <field name="name">Lista Técnico</field>
-      <field name="model">tecnico</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="in_date"/>
-        </tree>
-      </field>
-    </record>
-    
-    <record id="tecnico_form_view" model="ir.ui.view">
-      <field name="name">Formulario de Técnico</field>
-      <field name="model">tecnico</field>
-      <field name="arch" type="xml">
-        <form string="Formulario de Tecnico">
-          
-          <header>
-            <button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
-            <button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','borrador','despedido'])]}" type="object" string="Despedir"/>
-            <!--<button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado','borrador'])]}" type="object" string="Cancelar"/>-->
-            <button name="a_cancelado" states="cancelado,borrador,despedido" type="object" string="Cancelar"/>
-            <field name="state" widget="statusbar"/>
-          </header>
-          
-          <sheet>
-            <group>
-              <field name="name"/>
-              <field name="age"/>
-              <field name="email"/>
-              <field name="sexo"/>
-              <field name="in_date"/>
-              <field name="comment"/>
-              <field name="vehicle_id"/>
-              <field name="certificciones_ids"
-                     widget="many2many_tags"
-              
-              />
-            </group>
-            <notebook>
-              <page string="Licencias">
-                <field name="licencias_ids">
-                  <tree string="lineas de licencias" editable="bottom" >
-                    <field name="licencia_id"/>
-                    <field name="date_due"/>
-                  </tree>
-                </field>
-              </page>
-            </notebook>
-          </sheet>
-          
-          <div class="oe_chatter">
-            <field name="message_follower_ids" widget="mail_followers"/>
-            <field name="activity_ids" widget="mail_activity"/>
-            <field name="message_ids" widget="mail_thread"/>
-          </div>
-          
-        </form>
-      </field>
-    </record>
-    
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="tecnico_action_view">
-      <field name="name">Ventana Tecnico</field>
-      <field name="res_model">tecnico</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="tecnico.action_server">
-      <field name="name">tecnico server</field>
-      <field name="model_id" ref="model_tecnico_tecnico"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-    
-    <!-- Top menu item -->
-    <menuitem name="Tecnico" id="tecnico_menu_root"/>
-    <!-- menu categories -->
-    <menuitem name="Tecnico" id="tecnico_menu_1" parent="tecnico_menu_root"/>
-    <!--<menuitem name="Menu 2" id="tecnico.menu_2" parent="tecnico.menu_root"/>-->
-    <!-- actions -->
-    <menuitem name="Lista de Técnicos" id="tecnico_menu_1_list" parent="tecnico_menu_1"
-              action="tecnico_action_view"/>
-    <!--<menuitem name="Server to list" id="tecnico" parent="tecnico.menu_2"-->
-    <!--action="tecnico.action_server"/>-->
-  </data>
+	<data>
+		<!-- explicit list view definition -->
+		<record model="ir.ui.view" id="tecnico_tree_view">
+			<field name="name">Lista Técnico</field>
+			<field name="model">tecnico</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="in_date"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="tecnico_form_view" model="ir.ui.view">
+			<field name="name">Formulario de Técnico</field>
+			<field name="model">tecnico</field>
+			<field name="arch" type="xml">
+				<form string="Formulario de Tecnico">
+					
+					<header>
+						<button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
+						<button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','borrador','despedido'])]}" type="object" string="Despedir"/>
+						<!--<button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado','borrador'])]}" type="object" string="Cancelar"/>-->
+						<button name="a_cancelado" states="cancelado,borrador,despedido" type="object" string="Cancelar"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+					
+					<sheet>
+						<group cols="2">
+							<group>
+								<field name="name"/>
+								<field name="age"/>
+								<field name="email"/>
+								<field name="sexo"/>
+								<field name="in_date"/>
+								<field name="certificciones_ids" widget="many2many_tags"/>
+								<!--PARTE 5 CALCULO-->
+								<field name="birth"/>
+								<field name="score"/>
+								<!--PARTE 5 CALCULO-->
+							</group>
+							<group>
+								<field name="date_create"/>
+								<field name="days_add"/>
+								<field name="time_onbusiness"/>
+							</group>
+						</group>
+						<group cols="2" string="Vehículo y Licencia" >
+							<group cols="2" >
+								<!--La parte del domain pertenece al 3 -PARTE-->
+								<field name="vehicle_id" domain="[('proper_license', '=',licencia_id)]"/>
+								<!--La parte del domain pertenece al 3 -PARTE-->
+							</group>
+							<group cols="2" >
+								<field name="licencia_id"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Licencias">
+								<field name="licencias_ids">
+									<tree string="lineas de licencias" editable="bottom" >
+										<field name="licencia_id"/>
+										<field name="date_due"/>
+									</tree>
+								</field>
+								<group cols="1">
+									<field name="comment"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+					
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="activity_ids" widget="mail_activity"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				
+				</form>
+			</field>
+		</record>
+		
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="tecnico_action_view">
+			<field name="name">Ventana Tecnico</field>
+			<field name="res_model">tecnico</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- server action to the one above -->
+		<!--
+		<record model="ir.actions.server" id="tecnico.action_server">
+		  <field name="name">tecnico server</field>
+		  <field name="model_id" ref="model_tecnico_tecnico"/>
+		  <field name="state">code</field>
+		  <field name="code">
+			action = {
+			  "type": "ir.actions.act_window",
+			  "view_mode": "tree,form",
+			  "res_model": self._name,
+			}
+		  </field>
+		</record>
+		-->
+		
+		<!-- Top menu item -->
+		<menuitem name="Tecnico" id="tecnico_menu_root" web_icon="tecnico,static/description/icon.png"/>
+		<!-- menu categories -->
+		<menuitem name="Tecnico" id="tecnico_menu_1" parent="tecnico_menu_root"/>
+		<!--<menuitem name="Menu 2" id="tecnico.menu_2" parent="tecnico.menu_root"/>-->
+		<!-- actions -->
+		<menuitem name="Lista de Técnicos" id="tecnico_menu_1_list" parent="tecnico_menu_1"
+				  action="tecnico_action_view"/>
+		<!--<menuitem name="Server to list" id="tecnico" parent="tecnico.menu_2"-->
+		<!--action="tecnico.action_server"/>-->
+	</data>
 </odoo>

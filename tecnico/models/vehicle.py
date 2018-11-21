@@ -9,3 +9,6 @@ class Vehiculos(models.Model):
     name = fields.Char(string='Nombre')
     description = fields.Text(string="Descripción", required=False, )
     placa = fields.Char(string="Placa", required=False, )
+    # 2 -PARTE---------------------------------------------------------------------------------------------------------
+    proper_license = fields.Many2one(comodel_name="licencias", string="Licencia para Este vehiculo", required=False, )
+    # 2 -PARTE---------------------------------------------------------------------------------------------------------
