@@ -37,7 +37,7 @@
 								<field name="certificciones_ids" widget="many2many_tags"/>
 								<!--PARTE 5 CALCULO-->
 								<field name="birth"/>
-								<field name="score"/>
+								<!--<field name="score"/>-->
 								<!--PARTE 5 CALCULO-->
 							</group>
 							<group>
@@ -64,6 +64,11 @@
 										<field name="date_due"/>
 									</tree>
 								</field>
+								<!--PARTE 5 CALCULO-->
+								<group class="oe_subtotal_footer oe_right">
+									<field name="score"/>
+								</group>
+								<!--PARTE 5 CALCULO-->
 								<group cols="1">
 									<field name="comment"/>
 								</group>

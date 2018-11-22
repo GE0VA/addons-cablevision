@@ -65,6 +65,8 @@ class Tecnico(models.Model):
 
     @api.depends('in_date')
     def _compute_score(self):
+        qualification = 0
+        result = 'Malo'
         age = 0
         year, moth, day = [int(val) for val in (self.birth or '1990-12-01').split('-') ]
         birth = date(year, moth, day)
@@ -78,12 +80,39 @@ class Tecnico(models.Model):
             age = today.year - birth.year - 1
         else:
             age = today.year - birth.year
+
+        # Si su edad es menor a 20, obtiene 2
+        if age < 20:
+            qualification = 2
+
+        # si es mayor a 20 y menor a 40 obtiene 6
+        if 20 <= age <= 40:
+            qualification = 6
         
-        self.score = age
+        # mayor de 40 obtiene 5
+        if age > 40:
+            qualification = 5
+        
+        # por cada licencia que tenga la persona se suman 2 puntos
+        # for license in self.licencias_ids:
+        #     qualification += 2
 
+        qualification += len(self.licencias_ids) * 2
+        
+        # Si la puntuación es menor a 5 es Malo
+        if qualification < 5:
+            result = 'Malo'
+        
+        # de 5 a 8 Regular
+        if 5 <= qualification <= 8:
+            result = 'Regular'
+        
+        # mayor de 8 es Excelente
+        if qualification > 8:
+            result = 'Excelente'
+        print("\n\nLos puntos de la calificacion son %s \n\n" % qualification)
+        self.score = result
     # 5 -PARTE---------------------------------------------------------------------------------------------------------
-
-    
     
     @api.multi
     def a_contratado(self):
