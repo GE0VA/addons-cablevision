@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="tecnico_category" model="ir.module.category">
+			<field name="name">Tecnicos</field>
+			<field name="sequence" eval="1"/>
+		</record>
+		
+		<record id="tecnico_security_group" model="res.groups">
+			<field name="name">Modulo tecnicos</field>
+			<field name="category_id" ref="tecnico_category"/>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> <!--hace que el grupo sea heredado del grupo empleados-->
+			<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			<field name="comment">
+				Este grupo de permisos es para el modulo tecnico
+			</field>
+		</record>
+		
+		<!--HASTA AQUI Y SIN AGREGAR PERMISOS DE LAS TABLAS LOS USUARIOS NO PUEDEN VER EL MODULO-->
+		
+		<record id="button_contratar_security_group" model="res.groups">
+			<field name="name">Boton Contratar</field>
+			<field name="category_id" ref="tecnico_category"/>
+			<!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+			<field name="comment">
+				Permiso para limitar el acceso al boton contratar
+			</field>
+		</record>
+	
+	</data>
+</odoo>

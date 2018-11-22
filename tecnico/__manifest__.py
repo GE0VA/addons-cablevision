@@ -19,11 +19,12 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
         'views/tecnico_view.xml',
         'views/licencias_view.xml',
         'views/certificaciones_view.xml',
         'views/vehicles_view.xml',
         'data/cron.xml',
+        'security/security.xml',
+        'security/ir.model.access.csv',
     ],
 }

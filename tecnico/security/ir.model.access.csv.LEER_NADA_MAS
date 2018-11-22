@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tecnico,PermisosTecnico,model_tecnico,tecnico_security_group,1,0,0,0
+access_tecnico_licencias_line,Permisos Lineas Licencias Tecnico,model_tecnico_licencias_line,tecnico_security_group,1,0,0,0
+access_certificaciones,Permisos certificaciones,model_certificaciones,tecnico_security_group,1,0,0,0

@@ -148,12 +148,10 @@ class Tecnico(models.Model):
             print("\n\nCorreo Enviado\n\n")
 
 
+class TecnicoLicenciasLine(models.Model):
+    _name = 'tecnico.licencias.line'
+    _description = 'Licencias de para tecnicos'
 
-    class TecnicoLicenciasLine(models.Model):
-        _name = 'tecnico.licencias.line'
-        _description = 'Licencias de para tecnicos'
-
-        tecnico_id = fields.Many2one(comodel_name="tecnico", string="Lineas de Licencias", required=False, )
-        licencia_id = fields.Many2one(comodel_name="licencias", string="Licencia", required=False, )
-        date_due = fields.Date(string="Fecha de Vencimiento", required=False, )
-        
+    tecnico_id = fields.Many2one(comodel_name="tecnico", string="Lineas de Licencias", required=False, )
+    licencia_id = fields.Many2one(comodel_name="licencias", string="Licencia", required=False, )
+    date_due = fields.Date(string="Fecha de Vencimiento", required=False, )
