@@ -44,6 +44,7 @@
 								<field name="date_create"/>
 								<field name="days_add"/>
 								<field name="time_onbusiness"/>
+								<field name="send_welcome" readonly="False" attrs="{'invisible':[('state','=','borrador')]}" />
 							</group>
 						</group>
 						<group cols="2" string="Vehículo y Licencia" >

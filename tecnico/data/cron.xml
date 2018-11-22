@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data >
+		<!--Cron Tecnico-->
+		<record id="ir_cron_tecnicos" model="ir.cron">
+			<field name="name">Cron para Bienvenida Técnico</field>
+			<field eval="False" name="active"/>
+			<field name="user_id" ref="base.user_root"/>
+			<field name="interval_number">1</field>
+			<field name="interval_type">minutes</field>
+			<field name="numbercall">-1</field>
+			<field name="priority">10</field>
+			<field eval="False" name="doall"/>
+			<field name="model_id" ref="model_tecnico"/>
+			<field name="state">code</field>
+			<field name="code">model._send_welcome_mail()</field>
+		</record>
+	</data>
+</odoo>

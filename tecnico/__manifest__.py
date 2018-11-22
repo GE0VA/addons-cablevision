@@ -24,5 +24,6 @@
         'views/licencias_view.xml',
         'views/certificaciones_view.xml',
         'views/vehicles_view.xml',
+        'data/cron.xml',
     ],
 }

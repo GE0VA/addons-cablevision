@@ -31,6 +31,10 @@ class Tecnico(models.Model):
                                  ('cancelado', 'CANCELADO'),
                              ], required=False, default='borrador' )
 
+    # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
+    send_welcome = fields.Boolean(string="Enviado email de bienvenida",readonly=True,default=False  )
+    # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
+    
     # 4 -PARTE---------------------------------------------------------------------------------------------------------
     date_create = fields.Date(string="Fecha de Creación", required=False,readonly=True, default=fields.Date.context_today )
 
@@ -125,13 +129,25 @@ class Tecnico(models.Model):
     @api.multi
     def a_cancelado(self):
         self.state = 'cancelado'
-        
-    
-    # value2 = fields.Float(compute="_value_pc", store=True)
-    #
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     self.value2 = float(self.value) / 100
+
+
+    @api.model
+    def _send_welcome_mail(self):
+        tecnicos = self.search([('state', '=', 'contratado'), ('send_welcome', '=', False)])
+        for rec in tecnicos:
+            values = {
+                'author_id': 1,
+                'body_html': (' <div> Hola %s !!! Bienvenido... </div>' % rec.name),
+                'subject': 'Bienvenido %s' % rec.name,
+                'email_from': 'soporte@delfixcr.com',
+                'email_to': rec.email,
+                'template_id': None,
+            }
+            self.env['mail.mail'].create(values).send()
+            rec.send_welcome = True
+            print("\n\nCorreo Enviado\n\n")
+
+
 
     class TecnicoLicenciasLine(models.Model):
         _name = 'tecnico.licencias.line'
