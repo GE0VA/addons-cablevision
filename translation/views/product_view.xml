@@ -1,0 +1,68 @@
+<odoo>
+	<data>
+		<record id="product_product_tree_view" model="ir.ui.view">
+			<field name="name">Product List</field>
+			<field name="model">product</field>
+			<field name="arch" type="xml">
+				<tree string="Productos">
+					<field name="name"/>
+					<field name="cost"/>
+					<field name="sale_amount"/>
+					<field name="in_stock"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="product_product_form_view" model="ir.ui.view">
+			<field name="name">Product Form</field>
+			<field name="model">product</field>
+			<field name="arch" type="xml">
+				<form string="Formulario">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="cost"/>
+							<field name="sale_amount"/>
+							<field name="in_stock"/>
+							<field name="user_id"/>
+							<field name="categ"/>
+						</group>
+						<notebook>
+							<page string="Page of Description">
+								<group>
+									<field name="description"/>
+									<field name="long_description"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="product_product_action_view" model="ir.actions.act_window">
+			<field name="name">Product Action</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">product</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					<!-- Add Text Here -->Create a Product
+				</p>
+				
+				<p>
+					<!-- More details about what a user can do with this object will be OK -->
+				</p>
+			</field>
+		</record>
+		
+		
+		<menuitem name="Translations" id="translation_menu_root"/>
+		<!-- menu categories -->
+		<menuitem name="Products" id="translation_menu_1" parent="translation_menu_root"/>
+		
+		<menuitem name="Product List" id="translation" parent="translation_menu_1"
+				  action="product_product_action_view"/>
+	</data>
+</odoo>
