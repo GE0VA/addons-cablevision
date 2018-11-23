@@ -26,6 +26,24 @@
 				Permiso para limitar el acceso al boton contratar
 			</field>
 		</record>
+		
+		
+		
+		<!--REGLAS DE ACCESO-->
+		<record id="rule_view_tecinos" model="ir.rule">
+			<field name="name">Ver Tecnicos Creados</field>
+			<field name="model_id" ref="tecnico.model_tecnico"/>
+			<field name="domain_force">[('user_id', '=', user.id)]</field>
+			<field name="perm_write" eval="1"/>
+			<field name="perm_create" eval="1"/>
+			<field name="perm_read" eval="1"/>
+			<field name="perm_unlink" eval="1"/>
+			<!-- You can attach this rule to a specific group, Or make it Global -->
+			<!--<field name="groups" eval="[(4, ref('tecnico.tecnico_security_group'))]"/>-->
+			<!--<field name="global" eval="1"/> -->
+		</record>
+	
+	
 	
 	</data>
 </odoo>

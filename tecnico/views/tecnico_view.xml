@@ -8,6 +8,9 @@
 				<tree>
 					<field name="name"/>
 					<field name="in_date"/>
+					<!--7-PARTE REGLA-->
+					<field name="user_id"/>
+					<!--7-PARTE REGLA-->
 				</tree>
 			</field>
 		</record>
@@ -17,7 +20,6 @@
 			<field name="model">tecnico</field>
 			<field name="arch" type="xml">
 				<form string="Formulario de Tecnico">
-					
 					<header>
 						<!--<button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>-->
 						<button name="a_contratado" groups="tecnico.button_contratar_security_group" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
@@ -46,6 +48,9 @@
 								<field name="days_add"/>
 								<field name="time_onbusiness"/>
 								<field name="send_welcome" readonly="False" attrs="{'invisible':[('state','=','borrador')]}" />
+								<!--7-PARTE REGLA-->
+								<field name="user_id"/>
+								<!--7-PARTE REGLA-->
 							</group>
 						</group>
 						<group cols="2" string="Vehículo y Licencia" >

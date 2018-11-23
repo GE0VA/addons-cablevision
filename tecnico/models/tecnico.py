@@ -31,6 +31,14 @@ class Tecnico(models.Model):
                                  ('cancelado', 'CANCELADO'),
                              ], required=False, default='borrador' )
 
+    # 7-PARTE REGLA---------------------------------------------------------------------------------------------------------
+    user_id = fields.Many2one(comodel_name="res.users",
+                              string="Usuario",
+                              required=False,
+                              default=lambda self: self.env.user,
+                              copy=False)
+    # 7-PARTE REGLA---------------------------------------------------------------------------------------------------------
+
     # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
     send_welcome = fields.Boolean(string="Enviado email de bienvenida",readonly=True,default=False  )
     # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
