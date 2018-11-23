@@ -4,6 +4,7 @@ from odoo import models, fields, api
 
 class Tecnicos(models.Model):
      _name = 'tecnicos.odoo'
+     _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
      name = fields.Char( string="Nombre y apellidos", required=True )
      age = fields.Char( string="Edad", size=2 )
@@ -15,7 +16,7 @@ class Tecnicos(models.Model):
      licenses_ids = fields.One2many( comodel_name="tecnicos.odoo.lines", inverse_name="tecnico_id", string="Licencias" )
      titles_ids = fields.Many2many( comodel_name="titulos.odoo", relation="tecnico_odoo_rel", column1="tecnico_id",
                                          column2="titulo_id", string="Titulos" )
-     state = fields.Selection(string="Estado trabajador", selection=[('0', 'Borrador'), ('1', 'Contratado'), ('2', 'Despedido'), ('3', 'Cancelado')], default="0" )
+     state = fields.Selection(string="Estado trabajador", selection=[('0', 'Borrador'), ('1', 'Contratado'), ('2', 'Despedido'), ('3', 'Cancelado')], track_visibility='always', default="0" )
 
      @api.multi
      def a_contratado(self):

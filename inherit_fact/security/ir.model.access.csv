@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inherit_fact_inherit_fact,inherit_fact.inherit_fact,model_inherit_fact_inherit_fact,,1,0,0,0

@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Control de técnicos",
+    'name': "Factura electronica",
 
     'summary': """
-        Técnicos y su control""",
+        Modulo de practica""",
 
     'description': """
-        El proposito de este módulo es controlar a los técnicos
+        Practica de odoo para refresca info
     """,
 
-    'author': "Cable Visión",
-    'website': "http://www.cablevision.cr",
+    'author': "Cable Vision",
+    'website': "cablevision.cr",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.2',
+    'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'account_invoicing'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/tecnicos_view.xml',
-    ],
+        'views/inherit_fact.xml',
+    ]
 }

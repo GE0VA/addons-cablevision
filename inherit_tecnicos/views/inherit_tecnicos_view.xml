@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+   <!-- Inherit Form View to Modify it -->
+   <record id="inherit_tecnicos_form_view" model="ir.ui.view">
+       <field name="name">Herencia tecnicos</field>
+       <field name="model">tecnicos.odoo</field>
+       <field name="inherit_id" ref="tecnicos.tecnicos_form_view"/> <!-- aca se pone la vista o form a heredar -->
+       <field name="arch" type="xml">
+
+           <xpath expr="//field[@name='name']" position="after">
+             <field name="calle1"/>
+             <field name="ciudad"/>
+             <field name="provincia"/>
+             <field name="pais"/>
+             <field name="active"/>
+           </xpath>
+
+         <xpath expr="//field[@name='name']" position="attributes">
+           <attribute name="string">Nombre de tecnico</attribute>
+         </xpath>
+
+       </field>
+   </record>
+
+    <record id="inherit_tecnicos_tree_view" model="ir.ui.view">
+        <field name="name">Herencia tecnico lista</field>
+        <field name="model">tecnicos.odoo</field>
+        <field name="inherit_id" ref="tecnicos.tecnicos_list"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+              <field name="active"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="tecnicos_search_view" model="ir.ui.view">
+       <field name="name">Vista busqueda</field>
+       <field name="model">tecnicos.odoo</field>
+        <field name="arch" type="xml">
+            <search string="Busqueda">
+              <filter name="active" string="Es activo" domain="[('active','=',True)]"/>
+              <filter name="active" string="Es inactivo" domain="[('active','=',False)]"/>
+
+        </search>
+       </field>
+    </record>
+
+  </data>
+</odoo>
