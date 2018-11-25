@@ -80,6 +80,12 @@
 									<field name="comment"/>
 								</group>
 							</page>
+							<page string="Revision">
+							    <group>
+							        <field name="user" readonly="True" />
+							        <field name="date_revision" readonly="True"/>
+							    </group>
+							</page>
 						</notebook>
 					</sheet>
 					

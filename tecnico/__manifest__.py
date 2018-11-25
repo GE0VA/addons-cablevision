@@ -26,5 +26,6 @@
         'data/cron.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
+        'wizard/tecnico_wizard.xml',
     ],
 }

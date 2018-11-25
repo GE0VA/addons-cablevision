@@ -27,7 +27,14 @@
 			</field>
 		</record>
 		
-		
+		<record id="action_wizard_group" model="res.groups">
+			<field name="name">Wizard Registrar Usuarios</field>
+			<field name="category_id" ref="tecnico_category"/>
+			<!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+			<field name="comment">
+				Permiso para el Wizard
+			</field>
+		</record>
 		
 		<!--REGLAS DE ACCESO-->
 		<record id="rule_view_tecinos" model="ir.rule">

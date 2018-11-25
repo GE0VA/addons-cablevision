@@ -31,6 +31,12 @@ class Tecnico(models.Model):
                                  ('cancelado', 'CANCELADO'),
                              ], required=False, default='borrador' )
 
+    # PARTE WIZARD---------------------------------------------------------------------------------------------------------
+
+    user = fields.Many2one(comodel_name="res.users", string="Usuario que Revisa", required=True)
+    date_revision = fields.Date(string="Fecha a revisar", required=False)
+    
+    # PARTE WIZARD---------------------------------------------------------------------------------------------------------
     # 7-PARTE REGLA---------------------------------------------------------------------------------------------------------
     user_id = fields.Many2one(comodel_name="res.users",
                               string="Usuario",
