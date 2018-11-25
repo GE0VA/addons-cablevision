@@ -21,6 +21,11 @@ msgid "Amount of Sale"
 msgstr ""
 
 #. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_categ
+msgid "Category"
+msgstr ""
+
+#. module: translation
 #: model:ir.model.fields,field_description:translation.field_product_cost
 msgid "Cost"
 msgstr ""
@@ -76,8 +81,18 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_long_description
+msgid "Long Description"
+msgstr ""
+
+#. module: translation
 #: model:ir.model.fields,field_description:translation.field_product_name
 msgid "Name"
+msgstr ""
+
+#. module: translation
+#: model:ir.ui.view,arch_db:translation.product_product_form_view
+msgid "Page of Description"
 msgstr ""
 
 #. module: translation
@@ -106,13 +121,17 @@ msgid "Products"
 msgstr ""
 
 #. module: translation
-#: code:addons/translation/models/product.py:18
-#, python-format
-msgid "This text is not translated."
+#: model:ir.model.fields,field_description:translation.field_product_description
+msgid "Short Description"
 msgstr ""
 
 #. module: translation
 #: model:ir.ui.menu,name:translation.translation_menu_root
 msgid "Translations"
+msgstr ""
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_user_id
+msgid "User"
 msgstr ""
 
