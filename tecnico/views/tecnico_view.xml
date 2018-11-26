@@ -31,8 +31,6 @@
               <field name="age"/>
               <field name="email"/>
               <field name="sexo"/>
-              <field name="birth"/>
-              <field name="score"/>
               <field name="data"/>
               <field name="date_create"/>
               <field name="user_id"/>
