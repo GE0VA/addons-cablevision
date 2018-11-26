@@ -21,11 +21,11 @@ class Tecnicos(models.Model):
      labor_date = fields.Char( string="Tiempo laborado", compute="_compute_time", store=True )
      days_add = fields.Integer( string="Mas dias" )
 
-     @api.depends('ingress_date')
+     @api.depends('ingress_date', 'days_add')
      def _compute_time(self):
           for rec in self:
-              time = fields.Date.from_string(str(datetime.today())) - fields.Date.from_string(str((rec.ingress_date) or datetime.today()) [:10])
-              rec.time_onbusiness = time +  timedelta(days =0) #self.days_add
+              time = fields.Date.from_string(str(datetime.today())) - fields.Date.from_string(str((rec.ingress_date) or datetime.today())[:10])
+              rec.labor_date = time + timedelta(days = rec.days_add)
 
      @api.multi
      def a_contratado(self):
