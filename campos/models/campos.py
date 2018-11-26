@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import datetime, timedelta, date
 
 class Campos(models.Model):
     _name = 'campos.odoo'
@@ -18,6 +19,17 @@ class Campos(models.Model):
     licencias_ids = fields.One2many(comodel_name="licenciastecnico.odoo.lines", inverse_name="campos_id", string="Lineas de titulos", required=False, )
     certificaciones_ids = fields.Many2many(comodel_name="certificaciones.odoo", relation="campos_certificacion_rel", column1="tecnico_id", column2="certificaciones_id", string="Certificaciones", )
     state = fields.Selection(string="Estado", selection=[('borrador', 'BORRADOR'), ('contratado', 'CONTRATADO'), ('despedido', 'DESPEDIDO'),('cancelado', 'CANCELADO') ], required=False, default='borrador')
+    time_onbusiness = fields.Char(string="Tiempo en la empresa",compute="_compute_time",  store=True)
+    days_add = fields.Integer(string="Más días", required=False, )
+    fecha_ingreso = fields.Date(string="Fecha de ingreso", required=False, )
+
+    @api.depends('fecha_ingreso' )
+    def _compute_amount(self):
+        """
+        @api.depends() should contain all fields that will be used in the calculations.
+        """
+        time= fields.Date.from.string(str(datetime.today())) - fields.Date.from.string(str((self.in_date) or datetime.today())[:10])
+        self.fecha_ingreso = time + 0 #timedelta(days = self.days_add)
 
     @api.multi
     def a_contratado(self):
