@@ -8,3 +8,4 @@ class vehiculos(models.Model):
      name = fields.Char( string="Nombre", required=True )
      description = fields.Char( string="Descripcion" )
      placa = fields.Char( string="Placa", required=False )
+     vehiculo_licencia = fields.Many2one( comodel_name="licencias.odoo", string="Licencia del vehiculo" )

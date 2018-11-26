@@ -29,12 +29,15 @@
                 <field name="age" />
                 <field name="email" />
                 <field name="genre" />
+                <field name="birthday" />
                 <field name="ingress_date" />
                 <field name="labor_date"/>
                 <field name="days_add"/>
+                <field name="score"/>
                 <!--<newline /> -->
                 <field colspan="4" name="comments" />
-                <field name="vehicule_id" />
+                <field name="licencia_tecnico" />
+                <field name="vehicule_id" domain="[('vehiculo_licencia', '=', licencia_tecnico)]" />
                 <field name="licenses_ids">
                     <tree string="Lineas de licencias" editable="bottom">
                         <field name="licencia_id"/>
@@ -43,6 +46,8 @@
                 </field>
                 <!--<newline />-->
                 <field name="titles_ids" widget="many2many_tags" options="{'color_field':'color'}" />
+                <field name="user_id"/>
+                <field name="date_create"/>
             </group>
           </sheet>
           <div class="oe_chatter">
@@ -96,6 +101,5 @@
               action="tecnicos_action_view"/>
     <menuitem name="Editar" id="tecnicos_menu_2_list" parent="tecnicos_menu_2"
               action="tecnicos2_action_view"/>
-    -->
   </data>
 </odoo>
