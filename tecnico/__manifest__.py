@@ -19,5 +19,6 @@
     'data': [
 
         'views/tecnico_view.xml',
+       # 'views/vehiculo_view.xml'
     ],
 }

@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="tecnico_tree_view">
-      <field name="name">Lista de Tecnico</field>
-      <field name="model">tecnico.odoo</field>
+    <record model="ir.ui.view" id="vehiculo_tree_view">
+      <field name="name">Lista de Vehiculo</field>
+      <field name="model">vehiculo.odoo</field>
       <field name="arch" type="xml">
 
 
@@ -14,9 +14,9 @@
       </field>
     </record>
 
-    <record id="tecnico_from_view" model="ir.ui.view">
-      <field name="">Vista Formulario de tecnico</field>
-      <field name="model">tecnico.odoo</field>
+    <record id="vehiculo_from_view" model="ir.ui.view">
+      <field name="">Vista Formulario de Vehiculo</field>
+      <field name="model">vehiculo.odoo</field>
       <field name="arch" type="xml">
         <form string="tecnico en el  Sistema">
            <header>
@@ -31,16 +31,11 @@
               <field name="age"/>
               <field name="email"/>
               <field name="sexo"/>
-              <field name="birth"/>
-              <field name="score"/>
               <field name="data"/>
-              <field name="date_create"/>
-              <field name="user_id"/>
               <field name="time_onbusiness"/>
               <field name="days_add"/>
               <field name="Comen"/>
-              <field name="vehiculo_id" domain="[('proper_license', '=', licencias_id)]" widget="selection"/>
-              <field name="licencias_id"/>
+              <field name="vehiculo_id"/>
               <field name="certificaciones_ids"/>
 
 
