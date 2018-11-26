@@ -30,6 +30,7 @@
                 <field name="email" />
                 <field name="genre" />
                 <field name="ingress_date" />
+                <field name="labor_date"/>
                 <!--<newline /> -->
                 <field colspan="4" name="comments" />
                 <field name="vehicule_id" />
