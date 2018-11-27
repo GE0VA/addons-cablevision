@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tecnico_wizard_view" model="ir.ui.view">
+        <field name="name">Registrar Usuario</field>
+        <field name="model">tecnico.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Registrar Usuario">
+                <sheet>
+                    <group>
+                        <field name="user"/>
+                        <field name="date"/>
+                    </group>
+                    <footer>
+                        <button name="register_users" type="object" string="Registrar Usuarios" class="oe_link"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <act_window
+            id="tecnico_act_window"
+            name="Registrar técnico"
+            src_model="tecnicos.odoo"
+            res_model="tecnico.wizard"
+            view_type="form"
+            view_mode="form"
+            key2="client_action_multi"
+            target="new"
+            groups="action_wizard_group"
+    />
+
+
+
+    <!--
+    key2="client_action_multi"
+    Indica que sera reflejado en el boton acciones en la vista lista del modelo
+
+
+    view_mode="form"
+    indica como sera visualizado el wizard puede ser como formulario o como lista
+
+
+    src_model
+    El modelo de procedencia
+
+    res_model
+    Modelo donde se declara el wizard
+
+    groups
+    Permisos de Usuario
+
+    -->
+</odoo>

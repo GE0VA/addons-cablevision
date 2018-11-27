@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tecnico_category" model="ir.module.category">
+            <field name="name">Módulo de técnico</field>
+            <field name="sequence" eval="1"/>
+        </record>
+
+
+        <record id="tecnico_security_group" model="res.groups">
+            <field name="name">Técnico Simple</field>
+            <field name="category_id" ref="tecnico_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> <!--hace que el grupo sea heredado del grupo empleados-->
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">
+                Permisos simples para acceso a la tabla de tecnico
+            </field>
+        </record>
+
+
+
+        <record id="tecnico_avanzado_security_group" model="res.groups">
+            <field name="name">Técnico Avanzado</field>
+            <field name="category_id" ref="tecnico_category"/>
+            <field name="implied_ids" eval="[(4, ref('tecnico_security_group'))]"/> <!--hace que el grupo sea heredado del grupo empleados-->
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">
+                Permisos simavanzados para acceso a la tabla de tecnico
+            </field>
+        </record>
+
+        <record id="action_wizard_group" model="res.groups">
+            <field name="name">Wizard registrar usuarios</field>
+            <field name="category_id" ref="tecnico_category"/>
+            <!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+            <field name="comment">
+                Permiso para el wizard
+            </field>
+        </record>
+
+
+        <record id="button_contratar_security_group" model="res.groups">
+            <field name="name">Boton Contratar</field>
+            <field name="category_id" ref="tecnico_category"/>
+            <!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+            <field name="comment">
+                Permiso para limitar el acceso al boton contratar
+            </field>
+        </record>
+
+        <record id="rule_view_tecinos" model="ir.rule">
+            <field name="name">Ver Tecnicos Creados</field>
+            <field name="model_id" ref="tecnicos.model_tecnicos_odoo"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <!-- You can attach this rule to a specific group, Or make it Global -->
+            <!--<field name="groups" eval="[(4, ref('tecnico.tecnico_security_group'))]"/>-->
+            <!--<field name="global" eval="1"/> -->
+        </record>
+
+
+
+
+    </data>
+</odoo>
