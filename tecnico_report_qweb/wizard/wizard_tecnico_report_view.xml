@@ -1,0 +1,53 @@
+<odoo>
+	<data>
+		
+		<record id="tecnico_report_wizard_form" model="ir.ui.view">
+			<field name="name">Reporte tecnico</field>
+			<field name="model">tecnico.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Reporte Clientes">
+					<group col="4">
+						<field name="tecnico"/>
+					</group>
+					<footer>
+						<button name="print_xls" type="object" string="Imprimir excel" class="btn-primary"  />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<record id="tecnico_report_wizard_action" model="ir.actions.act_window">
+			<field name="name">Reporte tecnico</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">tecnico.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="tecnico_report_wizard_form"/>
+			<field name="target">new</field>
+		</record>
+		
+		<menuitem
+				id="tecnico_report_menu_id"
+				name="Tecnico xls"
+				parent="tecnico.tecnico_menu_1"
+				action="tecnico_report_wizard_action"
+				sequence="1"/>
+		
+		
+		<record id="tecnico_report_save_form" model="ir.ui.view">
+			<field name="name">Reporte XLS</field>
+			<field name="model">save.tecnico.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Reporte Clientes">
+					<field name="name" invisible="1"/>
+					<div>
+						<h2>Reporte de Clientes</h2>
+						<p>Descagar reporte : <field name="data" readonly="1" filename="name"/></p>
+					</div>
+					<footer><button string="Cerrar" class="btn-default" special="cancel"/></footer>
+				
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

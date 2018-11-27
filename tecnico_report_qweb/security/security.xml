@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="report_tecnico_security" model="res.groups">
+			<field name="name">Permisos de Impresion de Técnicos</field>
+			<!--<field name="category_id" ref=""/>-->
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+			<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			<field name="comment">
+				Con este permiso se limita quien puede imprimir el reporte
+			</field>
+		</record>
+	</data>
+</odoo>
