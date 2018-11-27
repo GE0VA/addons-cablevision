@@ -155,7 +155,6 @@ class Tecnico(models.Model):
     def a_cancelado(self):
         self.state = 'cancelado'
 
-
     @api.model
     def _send_welcome_mail(self):
         print("\n\nCron __________________________\n\n")
@@ -174,6 +173,9 @@ class Tecnico(models.Model):
             rec.send_welcome = True
             print("\n\nCorreo Enviado\n\n")
 
+    @api.onchange('licencia_id')
+    def onchange_licencia_id(self):
+        self.vehicle_id = False
 
 class TecnicoLicenciasLine(models.Model):
     _name = 'tecnico.licencias.line'

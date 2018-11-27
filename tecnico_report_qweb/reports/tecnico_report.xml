@@ -2,61 +2,65 @@
 	<data  noupdate="0">
 		<!--<delete id="tecnico_report_qweb" model="tecnico"/>-->
 		<report
-				id="tecnico_report_qweb"
+				id="tecnico_report_qweb1"
 				model="tecnico"
 				string="Técnico"
 				report_type="qweb-pdf"
-				name="tecnico.tecnico_report"
-				file="tecnico.tecnico_report"
+				name="tecnico.tecnico_report_template"
+				file="tecnico.tecnico_report_template"
 				groups="tecnico_report_qweb.report_tecnico_security"
 				print_report_name="'Cablevisión - %s' % (object.name)"
 		/>
 		
 		<report
-				id="tecnico_report_qweb_html"
+				id="tecnico_report_qweb_html1"
 				model="tecnico"
 				string="Técnico Html "
 				report_type="qweb-html"
-				name="tecnico.tecnico_report"
-				file="tecnico.tecnico_report"/>
+				name="tecnico.tecnico_report_template"
+				file="tecnico.tecnico_report_template"/>
 		
-		<template id="tecnico.tecnico_report">
-			<!--<t t-call="web.html_container">-->
-			<t t-foreach="docs" t-as="o">
-				<t t-call="web.external_layout">
-					<div class="page">
-						<t t-set="amount_licences" t-value="0.00"/>
-						<!--<img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' %o.company_id.logo" width="120" height="100" />-->
-						<div>
-							<strong>Técnico : </strong><span t-field="o.name"/><Br/>
-							<strong>Fecha de Ingreso : </strong><span t-field="o.date_create"/><Br/>
-							<strong>Vehiculo : </strong><span t-field="o.vehicle_id"/><Br/>
-						</div>
-						
-						<div>
-							<table width="100%" style="margin-top:10px;">
-								<tr style="border-top:1px solid #959595;border-bottom:1px solid #959595;" >
-									<th style="padding:10px 5px;text-align:left;" >Licencia</th>
-									<th style="padding:10px 5px;text-align:right;" >Fecha</th>
-								</tr>
-								<t t-foreach="o.licencias_ids" t-as="line">
-									<tr style="border-bottom:1px solid #959595;">
-										<td style="padding:10px 5px;text-align:left;"  ><span t-field="line.licencia_id"/></td>
-										<td style="padding:10px 5px;text-align:right;" ><span t-field="line.date_due"/></td>
-										<t t-set="amount_licences" t-value="amount_licences+1"/>
+		<template id="tecnico.tecnico_report_template">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="web.external_layout">
+						<div class="page">
+							<t t-set="amount_licences" t-value="0.00"/>
+							
+							<div style="text-align:center;font-size: 25px;" >
+								<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="120" height="100" /><Br/>
+								<strong>Compañia : </strong><span t-field="res_company.name"/><Br/>
+								<strong>Técnico : </strong><span t-field="o.name"/><Br/>
+							</div>
+							<div>
+								<strong>Fecha de Ingreso : </strong><span t-field="o.date_create"/><Br/>
+								<strong>Vehiculo : </strong><span t-field="o.vehicle_id"/><Br/>
+							</div>
+							
+							<div>
+								<table width="100%" style="margin-top:10px;">
+									<tr style="border-top:1px solid #959595;border-bottom:1px solid #959595;" >
+										<th style="padding:10px 5px;text-align:left;" >Licencia</th>
+										<th style="padding:10px 5px;text-align:right;" >Fecha</th>
 									</tr>
-								</t>
-							</table>
-						
+									<t t-foreach="o.licencias_ids" t-as="line">
+										<tr style="border-bottom:1px solid #959595;">
+											<td style="padding:10px 5px;text-align:left;"  ><span t-field="line.licencia_id"/></td>
+											<td style="padding:10px 5px;text-align:right;" ><span t-field="line.date_due"/></td>
+											<t t-set="amount_licences" t-value="amount_licences+1"/>
+										</tr>
+									</t>
+								</table>
+							
+							</div>
+							<div style="text-align:right;" >
+								<strong>Cantidad de Licencias : </strong>
+								<span t-esc="amount_licences" />
+							</div>
 						</div>
-						<div style="text-align:right;" >
-							<strong>Cantidad de Licencias </strong>
-							<span t-esc="amount_licences" />
-						</div>
-					</div>
+					</t>
 				</t>
 			</t>
-			<!--</t>-->
 		</template>
 	</data>
 </odoo>

@@ -73,7 +73,6 @@ class PartnerReport(models.TransientModel):
 		data = self.tecnico
 		# Make report body
 		for this in data.licencias_ids:
-			# partner = this['partner']
 			row += 1
 			#
 			# identification_type = ''
