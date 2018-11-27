@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tecnico,Permisos tabla técnico,model_tecnicos_odoo,tecnico_security_group,1,0,0,0
+access_tecnico_lines,Tabla de técnico lines,model_tecnicos_odoo_lines,tecnico_security_group,1,0,0,0
+access_tecnico_titulos,Tabla para títulos (certificaciones),model_titulos_odoo,tecnico_security_group,1,0,0,0
+access_tecnico_licencias,Tabla de licencias,model_licencias_odoo,tecnico_security_group,1,0,0,0
+access_tecnico_vehiculos,Table de vehículos,model_vehiculos_odoo,tecnico_security_group,1,0,0,0
+access_tecnico_avanado,Permisos tabla técnico (Avanzado),model_tecnicos_odoo,tecnico_avanzado_security_group,0,1,1,1
+access_tecnico_lines_avanzado,Tabla de técnico lines  (Avanzado),model_tecnicos_odoo_lines,tecnico_avanzado_security_group,0,1,1,1
+access_tecnico_titulos_avanzado,Tabla para títulos (certificaciones)  (Avanzado),model_titulos_odoo,tecnico_avanzado_security_group,0,1,1,1
+access_tecnico_licencias_avanzado,Tabla de licencias  (Avanzado),model_licencias_odoo,tecnico_avanzado_security_group,0,1,1,1
+access_tecnico_vehiculos_avanzado,Table de vehículos  (Avanzado),model_vehiculos_odoo,tecnico_avanzado_security_group,0,1,1,1

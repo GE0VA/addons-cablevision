@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inherit_tecnico_inherit_tecnico,inherit_tecnico.inherit_tecnico,model_inherit_tecnico_inherit_tecnico,,1,0,0,0

@@ -1,0 +1,138 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* translation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-27 15:19-0600\n"
+"PO-Revision-Date: 2018-11-27 15:28-0600\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Language: es_CR\n"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_sale_amount
+msgid "Amount of sale"
+msgstr "Monto de la venta"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_categ
+msgid "Category"
+msgstr "Categoría"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_cost
+msgid "Cost"
+msgstr "Costo"
+
+#. module: translation
+#: model:ir.actions.act_window,help:translation.product_product_action_view
+msgid "Create a Product"
+msgstr "Crear un producto"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: translation
+#: model:ir.ui.view,arch_db:translation.product_product_form_view
+msgid "Formulario"
+msgstr "Formulario"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_id
+msgid "ID"
+msgstr "ID"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_in_stock
+msgid "In Stock"
+msgstr "Disponible"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product___last_update
+msgid "Last Modified on"
+msgstr "Última modificación"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_write_date
+msgid "Last Updated on"
+msgstr "Última actualización"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_long_description
+msgid "Long descriptions"
+msgstr "Descripción larga"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: translation
+#: model:ir.ui.view,arch_db:translation.product_product_form_view
+msgid "Page of Description"
+msgstr "Descripción de la página"
+
+#. module: translation
+#: model:ir.actions.act_window,name:translation.product_product_action_view
+msgid "Product Action"
+msgstr "Acción de producto"
+
+#. module: translation
+#: model:ir.ui.menu,name:translation.translation
+msgid "Product List"
+msgstr "Lista de producto"
+
+#. module: translation
+#: model:ir.ui.view,arch_db:translation.product_product_tree_view
+msgid "Productos"
+msgstr "Productos"
+
+#. module: translation
+#: model:ir.model,name:translation.model_product
+msgid "Productos técnicos"
+msgstr "Productos técnicos"
+
+#. module: translation
+#: model:ir.ui.menu,name:translation.translation_menu_1
+msgid "Products"
+msgstr "Productos"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_description
+msgid "Short Description"
+msgstr "Descripción corta"
+
+#. module: translation
+#: model:ir.ui.menu,name:translation.translation_menu_root
+msgid "Translations"
+msgstr "Traducciones"
+
+#. module: translation
+#: model:ir.model.fields,field_description:translation.field_product_user_id
+msgid "User"
+msgstr "Usuario"
