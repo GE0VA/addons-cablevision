@@ -56,7 +56,7 @@
 						<group cols="2" string="Vehículo y Licencia" >
 							<group cols="2" >
 								<!--La parte del domain pertenece al 3 -PARTE-->
-								<field name="vehicle_id" domain="[('proper_license', '=',licencia_id)]"/>
+								<field name="vehicle_id" domain="[('proper_license', '=',licencia_id)]" widget="selection"/>
 								<!--La parte del domain pertenece al 3 -PARTE-->
 							</group>
 							<group cols="2" >
@@ -81,10 +81,10 @@
 								</group>
 							</page>
 							<page string="Revision">
-							    <group>
-							        <field name="user" readonly="True" />
-							        <field name="date_revision" readonly="True"/>
-							    </group>
+								<group>
+									<field name="user" readonly="True" />
+									<field name="date_revision" readonly="True"/>
+								</group>
 							</page>
 						</notebook>
 					</sheet>

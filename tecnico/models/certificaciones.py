@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class Certificaciones(models.Model):
     _name = 'certificaciones'
-    _description = 'Tabla para registrar certificaciones'
+    _description = 'Tabla certificaciones'
 
     name = fields.Char(string='Nombre')
     description = fields.Text(string="Descripción", required=False, )

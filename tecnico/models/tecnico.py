@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
-from datetime import datetime, timedelta
-from datetime import date
+from datetime import datetime, timedelta, date
 
 class Tecnico(models.Model):
     _name = 'tecnico'
-    _description = 'Tabla para registrar tecnicos'
+    _description = 'Tabla tecnicos'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     name = fields.Char(string='Nombre',track_visibility='always')
@@ -33,7 +31,7 @@ class Tecnico(models.Model):
 
     # PARTE WIZARD---------------------------------------------------------------------------------------------------------
 
-    user = fields.Many2one(comodel_name="res.users", string="Usuario que Revisa", required=True)
+    user = fields.Many2one(comodel_name="res.users", string="Usuario que Revisa", required=False)
     date_revision = fields.Date(string="Fecha a revisar", required=False)
     
     # PARTE WIZARD---------------------------------------------------------------------------------------------------------
@@ -46,22 +44,29 @@ class Tecnico(models.Model):
     # 7-PARTE REGLA---------------------------------------------------------------------------------------------------------
 
     # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
-    send_welcome = fields.Boolean(string="Enviado email de bienvenida",readonly=True,default=False  )
+    send_welcome = fields.Boolean(string="Enviado email de bienvenida",
+                                  readonly=True,
+                                  default=False  )
     # 6 -PARTE  CRON  ---------------------------------------------------------------------------------------------------------
     
     # 4 -PARTE---------------------------------------------------------------------------------------------------------
-    date_create = fields.Date(string="Fecha de Creación", required=False,readonly=True, default=fields.Date.context_today )
-
+    date_create = fields.Date(string="Fecha de Creación",
+                              required=False,
+                              readonly=True,
+                              default=fields.Date.context_today )
     # 4 -PARTE---------------------------------------------------------------------------------------------------------
 
     # 3 -PARTE---------------------------------------------------------------------------------------------------------
     licencia_id = fields.Many2one(comodel_name="licencias", string="Licencia", required=True, )
 
     # 3 -PARTE---------------------------------------------------------------------------------------------------------
-    
+
     
     # 1 -PARTE---------------------------------------------------------------------------------------------------------
-    time_onbusiness = fields.Char(string="Tiempo en la Empresa", required=False, compute="_compute_time", store=True )
+    time_onbusiness = fields.Char(string="Tiempo en la Empresa",
+                                  compute="_compute_time",
+                                  store=False )
+    
     days_add = fields.Integer(string="Mas dias", required=False, )
     
     @api.depends('in_date','days_add')
@@ -73,12 +78,18 @@ class Tecnico(models.Model):
         :return:
         """
         # time = fields.Date.from_string(str(datetime.today())) - fields.Date.from_string(str(self.in_date))
-        time = fields.Date.from_string(str(datetime.today())) - fields.Date.from_string(str((self.in_date) or datetime.today())[:10]) #TODO PUNTO 4
-        self.time_onbusiness = time + timedelta(days=self.days_add)
+        print("calculado")
+        for rec in self:
+            time = fields.Date.from_string(str(datetime.today())) - \
+                   fields.Date.from_string(str((rec.in_date) or datetime.today())[:10]) #TODO PUNTO 4
+            rec.time_onbusiness = time + timedelta(days=rec.days_add)
     # 1 -PARTE---------------------------------------------------------------------------------------------------------
 
     # 5 -PARTE---------------------------------------------------------------------------------------------------------
-    score = fields.Char(string="Calificación", required=False,readonly=True, compute='_compute_score' )
+    score = fields.Char(string="Calificación",
+                        required=False,
+                        readonly=True,
+                        compute='_compute_score' )
     birth = fields.Date(string="Fecha de Nacimiento", required=True, )
 
     @api.depends('in_date')
@@ -147,7 +158,9 @@ class Tecnico(models.Model):
 
     @api.model
     def _send_welcome_mail(self):
-        tecnicos = self.search([('state', '=', 'contratado'), ('send_welcome', '=', False)])
+        print("\n\nCron __________________________\n\n")
+        tecnicos = self.search([('state', '=', 'contratado'),
+                                ('send_welcome', '=', False)])
         for rec in tecnicos:
             values = {
                 'author_id': 1,
@@ -164,7 +177,7 @@ class Tecnico(models.Model):
 
 class TecnicoLicenciasLine(models.Model):
     _name = 'tecnico.licencias.line'
-    _description = 'Licencias de para tecnicos'
+    _description = 'Lineas de licencias de tecnicos'
 
     tecnico_id = fields.Many2one(comodel_name="tecnico", string="Lineas de Licencias", required=False, )
     licencia_id = fields.Many2one(comodel_name="licencias", string="Licencia", required=False, )
