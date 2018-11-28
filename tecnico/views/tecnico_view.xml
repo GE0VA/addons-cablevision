@@ -32,10 +32,11 @@
 					</header>
 					
 					<sheet>
-						<button class="oe_stat_button" type="object" name="licencias_tree_view" icon="fa-tasks">
-							<field name="licencias_count" widget="statinfo"/>
-						</button>
-						
+						<div class="oe_button_box" name="button_box">
+							<button class="oe_stat_button" type="object" name="licencias_tree_view" icon="fa-linux">
+								<field name="licencias_count" widget="statinfo"/>
+							</button>
+						</div>
 						<group cols="2">
 							<group>
 								<field name="name"/>
@@ -128,15 +129,11 @@
 		</record>
 		-->
 		
-		<!-- Top menu item -->
 		<menuitem name="Tecnico" id="tecnico_menu_root" web_icon="tecnico,static/description/icon.png"/>
-		<!-- menu categories -->
 		<menuitem name="Tecnico" id="tecnico_menu_1" parent="tecnico_menu_root"/>
-		<!--<menuitem name="Menu 2" id="tecnico.menu_2" parent="tecnico.menu_root"/>-->
-		<!-- actions -->
 		<menuitem name="Lista de Técnicos" id="tecnico_menu_1_list" parent="tecnico_menu_1"
 				  action="tecnico_action_view"/>
-		<!--<menuitem name="Server to list" id="tecnico" parent="tecnico.menu_2"-->
-		<!--action="tecnico.action_server"/>-->
+	
+	
 	</data>
 </odoo>

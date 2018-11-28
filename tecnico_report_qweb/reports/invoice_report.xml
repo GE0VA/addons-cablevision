@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="invoice_report_inherit" inherit_id="account.report_invoice_document">
+		<!--<xpath expr="//h2/span[4]" position="replace">-->
+			<!--<span t-if="o.type == 'out_refund'">Nota Crédito.....</span>-->
+		<!--</xpath>-->
+		<!---->
+		<xpath expr="//div[@class='row mt32 mb32']/div[2]"  position="replace">
+			<div class="col-xs-2" t-if="o.date_invoice">
+				<strong>FECHA:</strong>
+				<p t-field="o.date_invoice"/>
+			</div>
+		</xpath>
+		
+		<!--<xpath expr="//div[@class='row mt32 mb32']" position="before">-->
+		<!--<span t-if="o.number" >Numero de Factura agregado : </span>-->
+		<!--<span t-if="o.number" t-field="o.number"/>-->
+		<!--</xpath>-->
+	</template>
+</odoo>

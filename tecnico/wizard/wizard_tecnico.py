@@ -7,7 +7,7 @@ class WizardTecnico(models.TransientModel):
     
     user = fields.Many2one(comodel_name="res.users",
                            string="Usuario a asignar",
-                           required=True,
+                           required=False,
                            )
     date = fields.Date(string="Fecha a revisar",
                        required=False)

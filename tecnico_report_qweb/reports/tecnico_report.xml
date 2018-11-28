@@ -11,7 +11,7 @@
 				groups="tecnico_report_qweb.report_tecnico_security"
 				print_report_name="'Cablevisión - %s' % (object.name)"
 		/>
-		
+		<!---->
 		<report
 				id="tecnico_report_qweb_html1"
 				model="tecnico"
@@ -20,47 +20,91 @@
 				name="tecnico.tecnico_report_template"
 				file="tecnico.tecnico_report_template"/>
 		
+		
 		<template id="tecnico.tecnico_report_template">
-			<t t-call="web.html_container">
-				<t t-foreach="docs" t-as="o">
-					<t t-call="web.external_layout">
-						<div class="page">
-							<t t-set="amount_licences" t-value="0.00"/>
-							
-							<div style="text-align:center;font-size: 25px;" >
-								<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="120" height="100" /><Br/>
-								<strong>Compañia : </strong><span t-field="res_company.name"/><Br/>
-								<strong>Técnico : </strong><span t-field="o.name"/><Br/>
-							</div>
-							<div>
-								<strong>Fecha de Ingreso : </strong><span t-field="o.date_create"/><Br/>
-								<strong>Vehiculo : </strong><span t-field="o.vehicle_id"/><Br/>
-							</div>
-							
-							<div>
-								<table width="100%" style="margin-top:10px;">
-									<tr style="border-top:1px solid #959595;border-bottom:1px solid #959595;" >
-										<th style="padding:10px 5px;text-align:left;" >Licencia</th>
-										<th style="padding:10px 5px;text-align:right;" >Fecha</th>
-									</tr>
-									<t t-foreach="o.licencias_ids" t-as="line">
-										<tr style="border-bottom:1px solid #959595;">
-											<td style="padding:10px 5px;text-align:left;"  ><span t-field="line.licencia_id"/></td>
-											<td style="padding:10px 5px;text-align:right;" ><span t-field="line.date_due"/></td>
-											<t t-set="amount_licences" t-value="amount_licences+1"/>
-										</tr>
-									</t>
-								</table>
-							
-							</div>
-							<div style="text-align:right;" >
-								<strong>Cantidad de Licencias : </strong>
-								<span t-esc="amount_licences" />
-							</div>
+			<!--<t t-call="web.html_container">-->
+			<t t-foreach="docs" t-as="o">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<h2>Informe Técnico</h2>
+						
+						<div style="text-align:center;font-size: 25px;" >
+							<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" width="120" height="100" /><Br/>
+							<strong>Compañia : </strong><span t-field="res_company.name"/><Br/>
+							<strong>Técnico : </strong><span t-field="o.name"/><Br/>
 						</div>
-					</t>
+						
+						Usuario : <span t-esc="o.get_user()" ></span>
+						<div style="border: 1px solid black;padding:5px;">
+							<table width="100%">
+								<tr>
+									<td style="text-align:left;width:150px;" >
+										Nombre de Técnico
+									</td>
+									<td>
+										<span t-field="o.name" ></span>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:left;width:150px;" >
+										Edad
+									</td>
+									<td>
+										<span t-field="o.age" ></span>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:left;width:150px;" >
+										Certificciones
+									</td>
+									<td>
+										<!--<span t-field="o.certificciones_ids" ></span><Br/>-->
+										<t t-foreach="o.certificciones_ids" t-as="certificacion">
+											<span t-field="certificacion.name"/>
+										</t>
+									</td>
+								</tr>
+								
+								<tr>
+									<td style="text-align:left;width:150px;" >
+										Vehiculo
+									</td>
+									<td>
+										<span t-field="o.vehicle_id" ></span>
+										<span t-field="o.vehicle_id.description" ></span>
+										<span t-field="o.vehicle_id.placa" ></span>
+									</td>
+								</tr>
+								
+								
+								<t t-set="amount_licences" t-value="0.00"/>
+								<div>
+									<table width="100%" style="margin-top:10px;">
+										<tr style="border-top:1px solid #959595;border-bottom:1px solid #959595;" >
+											<th style="padding:5px;text-align:left;" >Licencia</th>
+											<th style="padding:5px;text-align:right;" >Fecha</th>
+										</tr>
+										<t t-foreach="o.licencias_ids" t-as="line">
+											<tr style="border-bottom:1px solid #959595;">
+												<td style="padding:5px;text-align:left;"  ><span t-field="line.licencia_id"/></td>
+												<td style="padding:5px;text-align:right;" ><span t-field="line.date_due"/></td>
+												<t t-set="amount_licences" t-value="amount_licences+1"/>
+											</tr>
+										</t>
+									</table>
+								
+								</div>
+								<div style="text-align:right;" >
+									<strong>Cantidad de Licencias : </strong>
+									<span t-esc="amount_licences" />
+								</div>
+							
+							</table>
+						</div>
+					</div>
 				</t>
 			</t>
+			<!--</t>-->
 		</template>
 	</data>
 </odoo>

@@ -5,10 +5,11 @@ URL = 'http://localhost:{}'.format(port)
 db = 'CAPACITACION_BAK'
 user = 'admin'
 password = 'x'
-context={'lang': 'es_CR', 'tz': 'America/Costa_Rica', 'uid': 1}
+
+
 uid = ServerProxy('{}/xmlrpc/2/common'.format(URL)).authenticate(db,user,password,{})
 odoo = ServerProxy('{}/xmlrpc/2/object'.format(URL))
-
+context={'lang': 'es_CR', 'tz': 'America/Costa_Rica', 'uid': uid}
 """
 Hacemos el llamado a la funcion search_read el cual es uno de los metodos del ORM
 """
@@ -25,31 +26,31 @@ for module in installed_modules:
     print(module['name'])
 
 """Diccionario para crear un nuevo registro"""
-new_tecnico = {
-    'name':'Freddy',
-    'birth':'1999-10-02',
-    'licencia_id':1,
-    'active':True,
-    'days_add':5
-}
-data_tecnico = odoo.execute_kw(
-    db,
-    uid,
-    password,
-    'tecnico',
-    'create',
-    [new_tecnico], {'context': context})
+# new_tecnico = {
+#     'name':'Andres',
+#     'birth':'1995-10-01',
+#     'licencia_id':1,
+#     'active':True,
+#     'days_add':4
+# }
+# data_tecnico = odoo.execute_kw(
+#     db,
+#     uid,
+#     password,
+#     'tecnico',
+#     'create',
+#     [new_tecnico], {'context': context})
 
 
 """
 Hacemos el llamado a la funcion search_read consultando la tabla tecnico
 """
 # data_tecnico = odoo.execute_kw(db,uid,password,'tecnico','search_read', [[],['name','age']], {'context': context})
-data_tecnico = odoo.execute_kw(db,uid,password,'tecnico','search_read', [[],['name','age']], {'context': context})
-
-for module in data_tecnico:
-    # print(module['name'])
-    print(module)
+# data_tecnico = odoo.execute_kw(db,uid,password,'tecnico','search_read', [[],['name','age']], {'context': context})
+#
+# for module in data_tecnico:
+#     # print(module['name'])
+#     print(module)
 
 
 """

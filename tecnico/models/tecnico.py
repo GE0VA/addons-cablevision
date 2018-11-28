@@ -37,8 +37,11 @@ class Tecnico(models.Model):
 
     @api.multi
     def _compute_licencias_ids(self):
+        
         for record in self:
-            obj_licencias_ids = self.env['tecnico.licencias.line'].search([('tecnico_id', '=', record.id)])
+            obj_licencias_ids = self.env['tecnico.licencias.line'].search([
+                ('tecnico_id', '=', record.id)])
+            
             licencias = []
             for licencia in obj_licencias_ids:
                 if licencia.licencia_id.id not in licencias:
@@ -195,6 +198,7 @@ class Tecnico(models.Model):
         self.state = 'cancelado'
 
     # Envia correo a partir de plantilla de correo
+    @api.multi
     def _send_welcome_mail(self):
         try:
             tecnicos = self.search([('state', '=', 'contratado'),('send_welcome', '=', False)])

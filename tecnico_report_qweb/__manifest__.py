@@ -12,7 +12,8 @@
     'data': [
         'security/security.xml',
         'reports/tecnico_report.xml',
-        'reports/header_inherit_report.xml',
+        # 'reports/header_inherit_report.xml',
+        'reports/invoice_report.xml',
         'data/paper_format.xml',
         'wizard/wizard_tecnico_report_view.xml',
     ],

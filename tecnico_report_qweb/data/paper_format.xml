@@ -14,7 +14,8 @@
 			<field name="header_line" eval="False"/>
 			<field name="header_spacing">35</field>
 			<field name="dpi">90</field>
-			<field name="report_ids" eval="[(4, ref('tecnico_report_qweb1'))]"/>
+			<field name="report_ids"
+				   eval="[(4, ref('tecnico_report_qweb1'))]"/>
 		</record>
 	</data>
 </odoo>
