@@ -24,6 +24,7 @@
         'views/certificaciones_view.xml',
         'views/vehicles_view.xml',
         'data/cron.xml',
+        'data/mail_template.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/tecnico_wizard.xml',

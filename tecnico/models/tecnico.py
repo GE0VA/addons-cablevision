@@ -157,11 +157,22 @@ class Tecnico(models.Model):
     def a_cancelado(self):
         self.state = 'cancelado'
 
-    @api.model
+    # Envia correo a partir de plantilla de correo
     def _send_welcome_mail(self):
-        print("\n\nCron __________________________\n\n")
-        tecnicos = self.search([('state', '=', 'contratado'),
-                                ('send_welcome', '=', False)])
+        try:
+            tecnicos = self.search([('state', '=', 'contratado'),('send_welcome', '=', False)])
+            for rec in tecnicos:
+                email_template = self.env.ref('tecnico.tecnico_mail_template')
+                email_template.send_mail(rec.id,raise_exception=True,force_send=True)
+                rec.send_welcome = True
+                print("\n\nCorreo Enviado\n\n")
+        except:
+            print("\n\nError al enviar correo\n\n")
+
+    @api.model
+    def _send_welcome_mail2(self):
+        print("\n\n__________________________Cron __________________________\n\n")
+        tecnicos = self.search([('state', '=', 'contratado'),('send_welcome', '=', False)])
         for rec in tecnicos:
             values = {
                 'author_id': 1,
@@ -178,10 +189,6 @@ class Tecnico(models.Model):
     @api.onchange('licencia_id')
     def onchange_licencia_id(self):
         self.vehicle_id = False
-        
-        
-        
-        
 
 class TecnicoLicenciasLine(models.Model):
     _name = 'tecnico.licencias.line'
