@@ -32,6 +32,10 @@
 					</header>
 					
 					<sheet>
+						<button class="oe_stat_button" type="object" name="licencias_tree_view" icon="fa-tasks">
+							<field name="licencias_count" widget="statinfo"/>
+						</button>
+						
 						<group cols="2">
 							<group>
 								<field name="name"/>

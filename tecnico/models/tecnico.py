@@ -29,6 +29,43 @@ class Tecnico(models.Model):
                                  ('cancelado', 'CANCELADO'),
                              ], required=False, default='borrador' )
 
+    # Ejemplo de SmartButton--------------------------------------------------------------------------------------------
+    
+    licencias_count = fields.Integer(string="Número de Licencias", compute='_compute_licencias_ids', )
+    list_licencias_ids = fields.Many2many(comodel_name="licencias", compute='_compute_licencias_ids',
+                                   string="Licencias")
+
+    @api.multi
+    def _compute_licencias_ids(self):
+        for record in self:
+            obj_licencias_ids = self.env['tecnico.licencias.line'].search([('tecnico_id', '=', record.id)])
+            licencias = []
+            for licencia in obj_licencias_ids:
+                if licencia.licencia_id.id not in licencias:
+                    licencias.append(licencia.licencia_id.id)
+                    
+            record.licencias_count = len(licencias) if licencias else 0
+            
+            list_licencias = []
+            for line in obj_licencias_ids:
+                list_licencias.append(line.licencia_id.id)
+            record.list_licencias_ids = list_licencias
+
+    @api.multi
+    def licencias_tree_view(self):
+        self.ensure_one()
+        domain = [('id', 'in', self.list_licencias_ids.ids)]
+        return {
+            'name': 'Licencias',
+            'domain': domain,
+            'res_model': 'licencias',
+            'type': 'ir.actions.act_window',
+            'view_id': False,
+            'view_mode': 'tree,form',
+        }
+
+    # Ejemplo de SmartButton--------------------------------------------------------------------------------------------
+    
     # PARTE WIZARD---------------------------------------------------------------------------------------------------------
 
     user = fields.Many2one(comodel_name="res.users",
