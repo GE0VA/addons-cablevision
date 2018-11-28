@@ -24,6 +24,23 @@ installed_modules = odoo.execute_kw(
 for module in installed_modules:
     print(module['name'])
 
+"""Diccionario para crear un nuevo registro"""
+new_tecnico = {
+    'name':'Freddy',
+    'birth':'1999-10-02',
+    'licencia_id':1,
+    'active':True,
+    'days_add':5
+}
+data_tecnico = odoo.execute_kw(
+    db,
+    uid,
+    password,
+    'tecnico',
+    'create',
+    [new_tecnico], {'context': context})
+
+
 """
 Hacemos el llamado a la funcion search_read consultando la tabla tecnico
 """
@@ -34,3 +51,8 @@ for module in data_tecnico:
     # print(module['name'])
     print(module)
 
+
+"""
+Documentacion
+https://www.odoo.com/documentation/11.0/webservices/odoo.html
+"""
