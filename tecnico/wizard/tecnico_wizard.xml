@@ -28,7 +28,7 @@
 			view_mode="form"
 			key2="client_action_multi"
 			target="new"
-			groups="action_wizard_group"/>
+			groups="action_wizard_group"
 	/>
 	
 	<!--

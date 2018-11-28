@@ -2,17 +2,29 @@
 <odoo>
 	<data>
 		<record id="tecnico_category" model="ir.module.category">
-			<field name="name">Tecnicos</field>
+			<field name="name">Módulo de Técnicos</field>
 			<field name="sequence" eval="1"/>
 		</record>
 		
+		
 		<record id="tecnico_security_group" model="res.groups">
-			<field name="name">Modulo tecnicos</field>
+			<field name="name">Técnico Simple</field>
 			<field name="category_id" ref="tecnico_category"/>
 			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> <!--hace que el grupo sea heredado del grupo empleados-->
 			<field name="users" eval="[(4, ref('base.user_root'))]"/>
 			<field name="comment">
-				Este grupo de permisos es para el modulo tecnico
+				Permisos simples para acceso a la tabla de tecnico
+			</field>
+		</record>
+		
+		
+		<record id="tecnico_avanzado_security_group" model="res.groups">
+			<field name="name">Técnico Avanzado</field>
+			<field name="category_id" ref="tecnico_category"/>
+			<field name="implied_ids" eval="[(4, ref('tecnico_security_group'))]"/> <!--hace que el grupo sea heredado del grupo empleados-->
+			<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			<field name="comment">
+				Permisos avanzados para acceso a la modulo de tecnico
 			</field>
 		</record>
 		
@@ -38,7 +50,7 @@
 		
 		<!--REGLAS DE ACCESO-->
 		<record id="rule_view_tecinos" model="ir.rule">
-			<field name="name">Ver Tecnicos Creados</field>
+			<field name="name">Ver Tecnicos Creados por usuario</field>
 			<field name="model_id" ref="tecnico.model_tecnico"/>
 			<field name="domain_force">[('user_id', '=', user.id)]</field>
 			<field name="perm_write" eval="1"/>

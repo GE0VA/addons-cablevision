@@ -31,7 +31,9 @@ class Tecnico(models.Model):
 
     # PARTE WIZARD---------------------------------------------------------------------------------------------------------
 
-    user = fields.Many2one(comodel_name="res.users", string="Usuario que Revisa", required=False)
+    user = fields.Many2one(comodel_name="res.users",
+                           string="Usuario que Revisa",
+                           required=False)
     date_revision = fields.Date(string="Fecha a revisar", required=False)
     
     # PARTE WIZARD---------------------------------------------------------------------------------------------------------
@@ -176,6 +178,10 @@ class Tecnico(models.Model):
     @api.onchange('licencia_id')
     def onchange_licencia_id(self):
         self.vehicle_id = False
+        
+        
+        
+        
 
 class TecnicoLicenciasLine(models.Model):
     _name = 'tecnico.licencias.line'

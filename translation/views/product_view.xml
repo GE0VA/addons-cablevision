@@ -20,9 +20,9 @@
 				<form string="Formulario">
 					<sheet>
 						<group>
-							<field name="name"/>
+							<field name="name" placeholder="Name of product"/>
 							<field name="cost"/>
-							<field name="sale_amount"/>
+							<field name="sale_amount"  />
 							<field name="in_stock"/>
 							<field name="user_id"/>
 							<field name="categ"/>
@@ -48,15 +48,14 @@
 			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
-					<!-- Add Text Here -->Create a Product
+					Add Text Here  Create a Product
 				</p>
 				
 				<p>
-					<!-- More details about what a user can do with this object will be OK -->
+					More details about what a user can do with this object will be OK
 				</p>
 			</field>
 		</record>
-		
 		
 		<menuitem name="Translations" id="translation_menu_root"/>
 		<!-- menu categories -->

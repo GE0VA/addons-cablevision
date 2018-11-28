@@ -22,7 +22,9 @@
 				<form string="Formulario de Tecnico">
 					<header>
 						<!--<button name="a_contratado" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>-->
-						<button name="a_contratado" groups="tecnico.button_contratar_security_group" attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
+						<button name="a_contratado"
+								groups="tecnico.button_contratar_security_group"
+								attrs="{'invisible':[('state','in',['cancelado','despedido','contratado'])]}" type="object" string="Contratar"/>
 						<button name="a_despedido" attrs="{'invisible':[('state','in',['cancelado','borrador','despedido'])]}" type="object" string="Despedir"/>
 						<!--<button name="a_cancelado" attrs="{'invisible':[('state','in',['cancelado','borrador'])]}" type="object" string="Cancelar"/>-->
 						<button name="a_cancelado" states="cancelado,borrador,despedido" type="object" string="Cancelar"/>

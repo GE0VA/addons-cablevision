@@ -29,9 +29,9 @@
 		<menuitem
 				id="tecnico_report_menu_id"
 				name="Tecnico xls"
-				parent="tecnico.tecnico_menu_1"
+				parent="tecnico.tecnico_menu_1_list"
 				action="tecnico_report_wizard_action"
-				sequence="1"/>
+				sequence="10"/>
 		
 		
 		<record id="tecnico_report_save_form" model="ir.ui.view">

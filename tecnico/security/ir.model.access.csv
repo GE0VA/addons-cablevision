@@ -1,5 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_tecnico,PermisosTecnico,model_tecnico,tecnico_security_group,1,1,1,0
-access_tecnico_licencias_line,Permisos Lineas Licencias Tecnico,model_tecnico_licencias_line,tecnico_security_group,1,1,1,0
-access_certificaciones,Permisos certificaciones,model_certificaciones,tecnico_security_group,1,1,1,0
-access_licencias,Permisos licencias,model_licencias,tecnico_security_group,1,1,1,0
+access_tecnico,Permisos Tabla Tecnico,model_tecnico,tecnico_security_group,1,0,0,0
+access_tecnico_licencias_line,Tabla de lista de Licencias,model_tecnico_licencias_line,tecnico_security_group,1,0,0,0
+access_certificaciones,Tabla de Certificaciones,model_certificaciones,tecnico_security_group,1,0,0,0
+access_vehicle,Tabla de Vehiculos,model_vehicle,tecnico_security_group,1,0,0,0
+access_licencias,Tabla de licencias,model_licencias,tecnico_security_group,1,0,0,0
+access_tecnico_avanzado,Permisos Tabla Tecnico avanzado,model_tecnico,tecnico_avanzado_security_group,0,1,1,1
+access_tecnico_licencias_line_avanzado,Tabla de lista de Licencias  avanzado,model_tecnico_licencias_line,tecnico_avanzado_security_group,0,1,1,1
+access_certificaciones_avanzado,Tabla de Certificaciones  avanzado,model_certificaciones,tecnico_avanzado_security_group,0,1,1,1
+access_vehicle_avanzado,Tabla de Vehiculos  avanzado,model_vehicle,tecnico_avanzado_security_group,0,1,1,1
+access_licencias_avanzado,Tabla de licencias  avanzado,model_licencias,tecnico_avanzado_security_group,0,1,1,1

@@ -5,8 +5,12 @@ from odoo import models, fields, api
 class WizardTecnico(models.TransientModel):
     _name = 'tecnico.wizard'
     
-    user = fields.Many2one(comodel_name="res.users", string="Usuario a asignar", required=True, default=6 )
-    date = fields.Date(string="Fecha a revisar", required=False,default="2018-10-25" )
+    user = fields.Many2one(comodel_name="res.users",
+                           string="Usuario a asignar",
+                           required=True,
+                           )
+    date = fields.Date(string="Fecha a revisar",
+                       required=False)
 
     @api.multi
     def register_users(self):

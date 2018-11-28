@@ -18,6 +18,10 @@ class Product(models.Model):
     categ = fields.Char(string="Category", required=False, translate=True)
     description = fields.Char(string="Short Description", required=False, )
     long_description = fields.Html(string="Long Description", translate=True)
+
+    _sql_constraints = [
+        ('name', 'unique (name)', _('This field must by unique!')),
+    ]
     
     @api.multi
     def write(self, values):
